@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "610377595021",
+    "project_id": "neo-live-a12ae",
+    "storage_bucket": "neo-live-a12ae.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610377595021:android:69b8484e7342d2fd9f8ac4",
+        "android_client_info": {
+          "package_name": "com.innovationnxt.neo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTfoaie4KXqTfA1oDwreEvMYDMMeMyoUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

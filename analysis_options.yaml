@@ -1,0 +1,23 @@
+
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # Performance Optimization rules
+    prefer_final_fields: true # # Ensures fields that are not reassigned are marked final.
+    prefer_const_declarations: true  # Use const for variables that never change.
+    unnecessary_null_checks: true # Avoid unnecessary null checks to reduce overhead.
+    close_sinks: true # Close all StreamController instances.
+    
+    # Code Style and Readability
+    prefer_const_constructors: true 
+    avoid_unnecessary_containers: true
+    use_key_in_widget_constructors: true # Ensures widgets with child elements use a key to avoid unnecessary rebuilding.
+    curly_braces_in_flow_control_structures: true
+
+    avoid_empty_else: true
+    avoid_setters_without_getters: true # Avoid setters without corresponding getters unless needed.
+
+analyzer:
+  exclude: # Optional: Exclude certain files if needed
+    - build/** # Excludes generated files
