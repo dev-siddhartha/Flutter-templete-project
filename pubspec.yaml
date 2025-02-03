@@ -48,6 +48,13 @@ dependencies:
   # for local storage
   shared_preferences: ^2.3.5
 
+  # for state management
+  flutter_bloc: ^9.0.0
+
+  # for handling nested widgets - used in global bloc provider
+  nested: ^1.0.0
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
