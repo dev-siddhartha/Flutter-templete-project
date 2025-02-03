@@ -8,6 +8,7 @@ enum TextType {
   heading,
   subHeading,
   display,
+  displaySmall,
   custom,
 }
 
@@ -72,65 +73,27 @@ class TextWidget extends StatelessWidget {
 
   /// Returns the appropriate text style based on the text type or custom options
   TextStyle _getTextStyle(BuildContext context) {
-    final isPortrait =
-        MediaQuery.of(context).orientation == Orientation.portrait;
-    final defaultColor = color ?? Theme.of(context).primaryColor;
+    final defaultColor =
+        color ?? Theme.of(context).textTheme.bodyMedium!.color!;
 
     switch (textType) {
       case TextType.title:
-        return _baseStyle(
-          context,
-          fontSize: isPortrait ? 16.sp : 16.5.sp,
-          fontWeight: FontWeight.w500,
-          color: defaultColor,
-        );
+        return Theme.of(context).textTheme.titleMedium!;
       case TextType.subTitle:
-        return _baseStyle(
-          context,
-          fontSize: isPortrait ? 14.sp : 14.5.sp,
-          fontWeight: FontWeight.w500,
-          color: defaultColor,
-        );
+        return Theme.of(context).textTheme.titleSmall!;
       case TextType.heading:
-        return _baseStyle(
-          context,
-          fontSize: isPortrait ? 20.sp : 20.5.sp,
-          fontWeight: FontWeight.w500,
-          color: defaultColor,
-        );
+        return Theme.of(context).textTheme.headlineMedium!;
       case TextType.subHeading:
-        return _baseStyle(
-          context,
-          fontSize: isPortrait ? 18.sp : 18.5.sp,
-          fontWeight: FontWeight.w500,
-          color: defaultColor,
-        );
+        return Theme.of(context).textTheme.headlineSmall!;
       case TextType.display:
-        return _baseStyle(
-          context,
-          fontSize: isPortrait ? 22.sp : 22.5.sp,
-          fontWeight: FontWeight.w700,
-          color: defaultColor,
-        );
+        return Theme.of(context).textTheme.displayMedium!;
+      case TextType.displaySmall:
+        return Theme.of(context).textTheme.displaySmall!;
       case TextType.custom:
         return _customStyle(context, defaultColor);
       case TextType.normal:
-        return _baseStyle(
-          context,
-          fontSize: isPortrait ? 14.sp : 14.5.sp,
-          fontWeight: FontWeight.w400,
-          color: defaultColor,
-        );
+        return Theme.of(context).textTheme.bodyMedium!;
     }
-  }
-
-  /// Base style generator for predefined text types
-  TextStyle _baseStyle(BuildContext context,
-      {required double fontSize,
-      required FontWeight fontWeight,
-      required Color color}) {
-    return context.getFontStyle(
-        fontSize: fontSize, fontWeight: fontWeight, color: color);
   }
 
   /// Style generator for custom text options
