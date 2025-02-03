@@ -1,4 +1,4 @@
-import 'package:neo_flutter/core/utils/app_imports.dart';
+import 'package:flutter_template/core/utils/app_imports.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.environment});
@@ -9,10 +9,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(375, 812),
+      designSize: MediaQuery.of(context).size,
       builder: (_, child) {
         return MaterialApp(
-          title: 'Neo',
+          title: 'Siddhartha',
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,

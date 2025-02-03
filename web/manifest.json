@@ -1,6 +1,6 @@
 {
-    "name": "neo_flutter",
-    "short_name": "neo_flutter",
+    "name": "flutter_template",
+    "short_name": "flutter_template",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

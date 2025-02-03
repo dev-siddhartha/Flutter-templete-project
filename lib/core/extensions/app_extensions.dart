@@ -1,4 +1,4 @@
-import 'package:neo_flutter/core/utils/app_imports.dart';
+import 'package:flutter_template/core/utils/app_imports.dart';
 
 extension FontStyleExtension on BuildContext {
   TextStyle getFontStyle({

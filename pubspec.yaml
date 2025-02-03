@@ -1,4 +1,4 @@
-name: neo_flutter
+name: flutter_template
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -40,6 +40,10 @@ dependencies:
 
   # responsiveness
   flutter_screenutil: ^5.9.3
+
+  # for dependency injection
+  get_it: ^8.0.3
+  injectable: ^2.5.0
 
 dev_dependencies:
   flutter_test:

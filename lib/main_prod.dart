@@ -1,4 +1,4 @@
-import 'package:neo_flutter/entry_point.dart';
+import 'package:flutter_template/entry_point.dart';
 
 void main() {
   EntryPoint().initializeApp(envType: EnvType.prod);

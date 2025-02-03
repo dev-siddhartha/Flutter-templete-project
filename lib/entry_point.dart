@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:neo_flutter/main_screen.dart';
-import 'package:neo_flutter/core/constants/environment_config.dart';
+import 'package:flutter_template/main_screen.dart';
+import 'package:flutter_template/core/constants/environment_config.dart';
 
 enum EnvType { dev, prod }
 
