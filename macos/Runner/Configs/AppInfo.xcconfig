@@ -8,7 +8,7 @@
 PRODUCT_NAME = neo_flutter
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.innovationnxt.neo
+PRODUCT_BUNDLE_IDENTIFIER = com.siddhartha.templete
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2025 com.example. All rights reserved.

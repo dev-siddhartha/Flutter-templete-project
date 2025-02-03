@@ -45,5 +45,6 @@ app.*.map.json
 /android/app/release
 
 
-*.vscode/
-*.env.*
+#! Uncomment this line while developing project
+# *.vscode/
+# *.env.*

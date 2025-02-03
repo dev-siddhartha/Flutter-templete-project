@@ -1,0 +1,44 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "di",
+            "type": "shell",
+            "command": "flutter packages pub run build_runner build — delete-conflicting-outputs",
+            "problemMatcher": [],
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "flutter clean; flutter pub get",
+            "problemMatcher": [],
+        },
+        {
+            "label": "aab",
+            "type": "shell",
+            "command": "flutter build appbundle -t lib/main.dart --flavor=prod",
+            "dependsOn": "clean",
+            "group": {
+                "kind": "build"
+            }
+        },
+        {
+            "label": "apk",
+            "type": "shell",
+            "command": "flutter build apk -t lib/main_prod.dart --flavor=prod",
+            "dependsOn": "clean",
+            "group": {
+                "kind": "build"
+            }
+        },
+        {
+            "label": "dev apk",
+            "type": "shell",
+            "command": "flutter build apk -t lib/main_dev.dart --flavor=dev",
+            "dependsOn": "clean",
+            "group": {
+                "kind": "build"
+            }
+        },
+    ]
+}
