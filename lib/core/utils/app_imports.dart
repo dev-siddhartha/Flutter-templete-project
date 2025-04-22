@@ -8,6 +8,7 @@ export 'package:flutter_template/core/utils/shared_preferences/shared_prefs_serv
 export 'package:flutter_template/core/widgets/text_widget.dart';
 export 'package:flutter_template/injectable/injectable.dart';
 export 'package:injectable/injectable.dart';
+export 'package:flutter_gen/gen_l10n/app_localizations.dart';
 export 'package:flutter_template/core/widgets/screen_padding.dart';
 export 'package:flutter_template/core/utils/navigation_service.dart';
 export 'package:flutter_template/core/routes/route_config.dart';

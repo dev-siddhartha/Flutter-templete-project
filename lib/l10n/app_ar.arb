@@ -1,0 +1,538 @@
+{
+  "@@locale": "ar",
+  "start": "يبدأ",
+  "@start": {
+    "description": "Text for start"
+  },
+  "create_account": "إنشاء حساب",
+  "welcome": "مرحبًا",
+  "sign_up_with_email_to_get_started": "اشترك باستخدام البريد الإلكتروني للبدء",
+  "profile_name": "اسم الملف الشخصي",
+  "sign_up_with_phone_number": "اشترك باستخدام رقم الهاتف",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "submit": "إرسال",
+  "or_sign_in_with": "أو سجل الدخول باستخدام",
+  "phone_number": "رقم الهاتف",
+  "already_have_account": "هل لديك حساب بالفعل؟",
+  "log_in": "تسجيل الدخول",
+  "welcome_back": "مرحبًا بعودتك",
+  "login_with_email_account": "تسجيل الدخول باستخدام البريد الإلكتروني",
+  "login_with_phone_number": "تسجيل الدخول باستخدام رقم الهاتف",
+  "login": "تسجيل الدخول",
+  "or_login_with": "أو تسجيل الدخول باستخدام",
+  "dont_have_account": "ليس لديك حساب؟",
+  "sign_up": "اشترك",
+  "chats": "الدردشات",
+  "friends": "الأصدقاء",
+  "messages": "الرسائل",
+  "audio_call": "مكالمة صوتية",
+  "video_call": "مكالمة فيديو",
+  "message": "رسالة",
+  "enter_phone_number": "أدخل رقم الهاتف",
+  "please_enter_phone_number": "يرجى إدخال رقم الهاتف",
+  "please_enter_valid_phone_number": "يرجى إدخال رقم هاتف صحيح",
+  "mpin": "الرمز السري",
+  "enter_psw": "أدخل كلمة المرور",
+  "psw_notEmpty": "لا يمكن أن تكون كلمة المرور فارغة",
+  "psw_length": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
+  "psw_uppercase": "يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل",
+  "psw_lowercase": "يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل",
+  "psw_number": "يجب أن تحتوي كلمة المرور على رقم واحد على الأقل",
+  "psw_special": "يجب أن تحتوي كلمة المرور على حرف خاص واحد على الأقل",
+  "remember_me": "تذكرني",
+  "forgot_psw": "هل نسيت كلمة المرور؟",
+  "new_user": "أنا مستخدم جديد.",
+  "no_transaction": "لم يتم العثور على أي معاملة",
+  "@no_transaction": {
+    "description": "Message shown when no transaction is found"
+  },
+  "kyc": "التحقق من الهوية",
+  "@kyc": {},
+  "kyc_verify": "التحقق من KYC",
+  "@kyc_verify": {
+    "description": "Label for KYC verification"
+  },
+  "complete_kyc": "أكمل عملية معرفة هويتك",
+  "@complete_kyc": {},
+  "complete_kyc_desc": "تأمين محفظتك عن طريق التحقق من هويتك",
+  "@complete_kyc_desc": {},
+  "mobile_register": "تسجيل الهاتف المحمول",
+  "@mobile_register": {
+    "description": "Label for mobile registration"
+  },
+  "identity_verify": "التحقق من الهوية",
+  "@identity_verify": {
+    "description": "Label for identity verification"
+  },
+  "liveness_detect": "التحقق من الحيوية",
+  "@liveness_detect": {
+    "description": "Label for liveness verification"
+  },
+  "register": "تسجيل",
+  "good_morning": "صباح الخير",
+  "good_afternoon": "مساء الخير",
+  "good_evening": "مساء الخير",
+  "load_wallet": "شحن المحفظة",
+  "fund_transfer": "تحويل الأموال",
+  "bank_transfer": "تحويل بنكي",
+  "recharge": "إعادة الشحن",
+  "electricity_water": "الكهرباء والمياه",
+  "internet_tv": "الإنترنت والتلفزيون",
+  "government": "الحكومة",
+  "insurance": "التأمين",
+  "more": "المزيد",
+  "util_bills": "الفواتير والخدمات",
+  "current_balance": "الرصيد الحالي",
+  "home": "الرئيسية",
+  "statement": "كشف الحساب",
+  "my_cards": "بطاقاتي",
+  "settings": "الإعدادات",
+  "lang": "اللغة",
+  "my_profile": "ملفي الشخصي",
+  "contact_us": "اتصل بنا",
+  "general": "عام",
+  "security": "الأمان",
+  "change_password": "تغيير كلمة المرور",
+  "privacy_policy": "سياسة الخصوصية",
+  "choose_data_share": "اختر البيانات التي تشاركها معنا",
+  "biometric": "بصمة",
+  "theme": "المظهر",
+  "dark_theme": "المظهر الداكن",
+  "change_lang": "تغيير اللغة",
+  "log_bio": "تسجيل الدخول باستخدام البيانات البيومترية",
+  "log_face_id": "تسجيل الدخول باستخدام بصمة الوجه",
+  "change_pin": "تغيير الدبوس",
+  "notification": "إشعار",
+  "account": "حساب",
+  "account_information": "معلومات الحساب",
+  "my_information": "معلومات الحساب",
+  "rate_review": "معلوماتي",
+  "help": "يساعد",
+  "logout": "تسجيل الخروج",
+  "enjoy_features": "استمتع بجميع الميزات التي تجعل من السهل عليك إدارة أموالك",
+  "name": "الاسم",
+  "enter_name": "أدخل الاسم الكامل",
+  "gender": "الجنس",
+  "male": "ذكر",
+  "female": "أنثى",
+  "other": "آخر",
+  "proceed": "تابع",
+  "national_id": "الهوية الوطنية",
+  "passport": "جواز السفر",
+  "skip": "تخطى",
+  "enter_otp": "أدخل رمز التحقق الذي أرسلناه إلى",
+  "verify": "تحقق",
+  "resend": "إعادة الإرسال",
+  "ac_created": "تم إنشاء الحساب",
+  "ac_created_slogon": "حيث تلتقي التكنولوجيا بالحرية المالية",
+  "get_started": "ابدأ",
+  "click_terms": "بالنقر على ابدأ، فإنك توافق على",
+  "privacy_policy_terms_sevice": "سياسة الخصوصية وشروط الخدمة",
+  "set_pin": "قم بتعيين رقم التعريف الشخصي",
+  "set_pin_descrip": "ستستخدمه للدفع",
+  "save_pin": "احفظ رقم التعريف الشخصي",
+  "transactions": "المعاملات",
+  "select_data": "يختار {data}",
+  "@select_data": {
+    "description": "Title to select something",
+    "placeholders": {
+      "data": {
+        "type": "String"
+      }
+    }
+  },
+  "image": "صورة",
+  "@image": {},
+  "camera": "آلة تصوير",
+  "gallery": "معرض",
+  "microphone": "ميكروفون",
+  "contacts": "ميكروفون",
+  "storage": "تخزين",
+  "location": "موقع",
+  "bluetooth": "بلوتوث",
+  "open_settings": "الإعدادات المفتوحة",
+  "confirm": "يتأكد",
+  "cancel": "يلغي",
+  "success": "نجاح",
+  "@success": {},
+  "error": "خطأ",
+  "@error": {},
+  "failure": "فشل",
+  "@failure": {},
+  "permission_granted": "{permissionFor} Permission Granted",
+  "@permission_granted": {
+    "description": "You have granted {permissionFor} permission",
+    "placeholders": {
+      "permissionFor": {
+        "type": "String"
+      }
+    }
+  },
+  "permission_denied": "{permissionFor} Permission Denied",
+  "@permission_denied": {
+    "description": "You have denied {permissionFor} permission",
+    "placeholders": {
+      "permissionFor": {
+        "type": "String"
+      }
+    }
+  },
+  "recent_transaction": "المعاملات الحديثة",
+  "view_all": "عرض الكل",
+  "available_balance": "الرصيد المتوفر",
+  "change_psw_title": "غيّر كلمة المرور لحماية حسابك",
+  "@change_psw_title": {},
+  "change_psw_descrip": "حصّن حسابك بكلمة مرور قوية. امزج بين الأحرف والأرقام والرموز للحفاظ على حصنك الرقمي غير قابل للاختراق",
+  "@change_psw_descrip": {},
+  "old_psw": "كلمة المرور القديم",
+  "@old_psw": {},
+  "new_psw": "كلمة المرور الجديدة",
+  "@new_psw": {},
+  "old_psw_null": "أدخل كلمة المرور القديمة",
+  "@old_psw_null": {},
+  "new_psw_null": "أدخل كلمة المرور الجديدة",
+  "@new_psw_null": {},
+  "create_psw_ar": "إنشاء كلمة مرور",
+  "@create_psw_ar": {},
+  "create_psw_title_ar": "قم بإعداد كلمة المرور الخاصة بك",
+  "@create_psw_title_ar": {},
+  "create_psw_descrip_ar": "اختر كلمة مرور قوية لحماية حسابك.",
+  "@create_psw_descrip_ar": {},
+  "confirm_psw_ar": "تأكيد كلمة المرور",
+  "@confirm_psw_ar": {},
+  "create_psw": "إنشاء كلمة مرور",
+  "@create_psw": {},
+  "create_psw_title": "أنشئ كلمة مرورك لحماية حسابك",
+  "@create_psw_title": {},
+  "create_psw_descrip": "عزّز أمان حسابك بكلمة مرور فريدة. استخدم مزيجًا من الأحرف والأرقام والرموز لجعل محفظتك الرقمية آمنة للغاية.",
+  "@create_psw_descrip": {},
+  "confirm_psw": "تأكيد كلمة المرور",
+  "@confirm_psw": {},
+  "psw_not_match": "كلمات المرور غير متطابقة",
+  "@psw_not_match": {},
+  "cancel_process_title": "Do you want to cancel {title} process?",
+  "@cancel_process_title": {
+    "description": "Title to cancel certain process",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "complete_title": "أكمل {title}",
+  "@complete_title": {
+    "description": "Title to complete certain process",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "scan_pay": "امسح وادفع",
+  "@scan_pay": {
+    "description": "Label for Scan & Pay option"
+  },
+  "tap_pay": "اضغط وادفع",
+  "@tap_pay": {
+    "description": "Label for Tap & Pay option"
+  },
+  "completed": "مكتمل",
+  "@completed": {
+    "description": "Indicates that a process has been completed"
+  },
+  "cancel_process_message": "Your {title} process will be cancelled.",
+  "@cancel_process_message": {
+    "description": "Message to show on cancel process",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "biometric_setup": "إعداد البصمة",
+  "@biometric_setup": {},
+  "biometric_login": "تمكين لتسجيل الدخول",
+  "@biometric_login": {},
+  "biometric_transaction": "تمكين للمعاملات",
+  "@biometric_transaction": {},
+  "continue_": "متابعة",
+  "amount": "المبلغ",
+  "confirmation": "التأكيد",
+  "date_time": "التاريخ/الوقت",
+  "payment_method": "طريقة الدفع",
+  "click_to_pay": "اضغط للدفع",
+  "money_transfer": "تحويل الأموال",
+  "@money_transfer": {},
+  "transaction_id": "معرّف المعاملة",
+  "@transaction_id": {},
+  "pay_now": "ادفع الآن",
+  "@pay_now": {},
+  "my_qr": "رمز QR الخاص بي",
+  "@my_qr": {},
+  "scan_to_receive": "امسح للاستلام",
+  "@scan_to_receive": {},
+  "scan_to_receive_money": "امسح رمز QR لاستلام الأموال",
+  "@scan_to_receive_money": {},
+  "generate_qr": "إنشاء رمز QR",
+  "@generate_qr": {},
+  "download": "تنزيل",
+  "@download": {},
+  "share_qr": "مشاركة رمز QR",
+  "@share_qr": {},
+    "hi": "مرحباً",
+  "customer": "عميل",
+  "link_bank": "ربط الحساب البنكي",
+  "link": "ربط",
+  "link_bank_descrip": "اربط حسابك البنكي لإجراء المدفوعات والتحويلات",
+  "financial_payments": "المدفوعات المالية",
+  "request_money": "طلب المال",
+  "atm_withdraw": "سحب من الصراف الآلي",
+  "personal_id": "الهوية الشخصية",
+  "citizenship": "الجنسية",
+  "driving_license": "رخصة القيادة",
+  "scan_id": "امسح بطاقة الهوية الخاصة بك",
+  "upload_image": "تحميل صورة {title}",
+  "@upload_image": {
+    "description": "الخلف أو الأمام",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "back": "الخلف",
+  "front": "الأمام",
+  "take_photo": "التقط صورة",
+  "record_video": "تسجيل فيديو",
+  "identity_verify_descrip": "ما عليك سوى مسح بطاقة هويتك، وسيقوم نظامنا باستخلاص التفاصيل الرئيسية تلقائيًا لعملية KYC سريعة وآمنة",
+  "personal_id_descrip": "يمكنك متابعة التحقق من KYC باستخدام أي من المستندات المقبولة.",
+  "transaction_detail": "تفاصيل المعاملة",
+  "fund_transfer_to": "تم تحويل الأموال إلى {title}",
+  "@fund_transfer_to": {
+    "description": "إلى من",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "merchant_name": "اسم التاجر",
+  "pay_from": "الدفع من",
+  "purpose": "الغاية",
+  "remarks": "ملاحظات",
+  "dispute": "نزاع",
+  "redo": "إعادة",
+  "issue": "مشكلة",
+  "issue_descrip": "وصف المشكلة",
+  "upload_data": "تحميل {title}",
+  "@upload_data": {
+    "description": "شيء ما",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "evidence": "دليل",
+  "send_money": "إرسال الأموال",
+  "wallet_id": "معرّف المحفظة",
+  "enter_wallet_id": "أدخل معرّف المحفظة",
+  "contact": "جهة الاتصال",
+  "receipient": "المستلم",
+  "previous_transaction": "المعاملة السابقة",
+  "optional": "اختياري",
+  "write_remarks": "اكتب الملاحظات",
+  "verify_transaction": "تحقق من المعاملة",
+  "use_pin": "استخدم الرقم السري",
+  "transaction": "معاملة",
+  "pay_success": "تم الدفع بنجاح",
+  "done": "تم",
+  "days": "{title} أيام",
+  "@days": {
+    "description": "الأيام",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "this_month": "هذا الشهر",
+  "custom": "مخصص",
+  "from": "من",
+  "to": "إلى",
+  "select_date": "اختر التاريخ",
+  "select_time": "اختر الوقت",
+  "select_date_time": "اختر التاريخ والوقت",
+  "select_dates": "اختر التواريخ",
+  "start_date": "تاريخ البدء",
+  "end_date": "تاريخ الانتهاء",
+  "select_start_date": "اختر تاريخ البدء",
+  "select_end_date": "اختر تاريخ الانتهاء",
+  "select_start_end_date": "اختر تاريخ البدء والانتهاء",
+  "date_format_hint": "يرجى إدخال التاريخ بصيغة {title}",
+  "@date_format_hint": {
+    "description": "صيغة التاريخ",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "time_format_hint": "يرجى إدخال الوقت بصيغة {title}",
+  "@time_format_hint": {
+    "description": "صيغة الوقت",
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "apply_changes": "تطبيق التغييرات",
+  "filter": "تصفية",
+  "status": "الحالة",
+  "pending": "قيد الانتظار",
+  "failed": "فشل",
+  "channel": "القناة",
+  "app": "تطبيق",
+  "web": "ويب",
+  "nfc": "NFC",
+  "transaction_property": "خاصية المعاملة",
+  "ref_code": "رمز المرجع",
+  "show_result": "عرض النتيجة",
+   "additional_info": "معلومات إضافية",
+  "lend_borrow": "إقراض / اقتراض",
+  "card_limitation": "لا يمكن إضافة أكثر من ٨ بطاقات",
+  "cards": "بطاقات",
+  "no_cards": "لا توجد بطاقات متاحة",
+  "add_card": "أضف بطاقة",
+  "cr_or_dr": "بطاقة ائتمان أو خصم",
+  "select_card_clr": "اختر لون البطاقة",
+  "card_holder_name": "اسم حامل البطاقة",
+  "enter_holder_name": "أدخل اسم حامل البطاقة",
+  "pls_enter_holder_name": "يرجى إدخال اسم حامل البطاقة",
+  "card_num": "رقم البطاقة",
+  "enter_card_num": "أدخل رقم البطاقة",
+  "pls_enter_card_num": "يرجى إدخال رقم البطاقة",
+  "card_exp_date": "تاريخ انتهاء البطاقة",
+  "enter_exp_date": "أدخل تاريخ انتهاء البطاقة",
+  "pls_enter_exp_date": "يرجى إدخال تاريخ انتهاء البطاقة",
+  "card_cvc": "رمز التحقق من البطاقة (CVC)",
+  "cvc": "CVC",
+  "pls_enter_cvc": "يرجى إدخال رمز CVC",
+  "enter_channel": "أدخل القناة",
+  "pls_enter_channel": "يرجى إدخال القناة",
+  "logout_warning": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "enter_old_psw": "أدخل كلمة المرور القديمة",
+  "enter_new_psw": "أدخل كلمة المرور الجديدة",
+  "psw_change_success": "تم تغيير كلمة المرور بنجاح",
+  "something_wrong": "حدث خطأ ما",
+  "reenter_psw": "أعد إدخال كلمة المرور",
+  "liveness_detect_descrip": "حرك وجهك للتحقق من هويتك",
+  "begin_liveness": "لبدء التحقق، اتبع الخطوات البسيطة أدناه لضمان اكتشاف وجهك بوضوح.",
+  "center_face": "ضع وجهك في منتصف الإطار",
+  "center_face_descrip": "قم بمحاذاة وجهك داخل إطار التوجيه على الشاشة.",
+  "use_good_light": "استخدم إضاءة جيدة",
+  "use_good_light_descrip": "تجنب الظلال القوية أو الإضاءة الخلفية. الضوء الطبيعي هو الأفضل.",
+  "remove_accessories": "أزل الإكسسوارات",
+  "remove_accessories_descrip": "لا ترتدي نظارات شمسية، قبعات، أو أي شيء يخفي وجهك.",
+  "document_details": "تفاصيل المستند",
+  "correct_info_waring": "تأكد من الدقة قبل الإرسال",
+  "ocr_info_warning": "قد تحتوي التفاصيل الممسوحة على بعض الأخطاء الصغيرة، إذا كان هناك خطأ، يرجى تصحيحه قبل المتابعة",
+  "document_id": "رقم المستند",
+  "enter_document_id": "أدخل رقم المستند",
+  "pls_enter_doc_id": "يرجى إدخال رقم المستند",
+  "full_name": "الاسم الكامل",
+  "enter_full_name": "أدخل الاسم الكامل",
+  "pls_enter_full_name": "يرجى إدخال الاسم الكامل",
+  "dob": "تاريخ الميلاد",
+  "date_of_birth": "تاريخ الميلاد",
+  "edit": "تعديل",
+  "enter_email": "أدخل بريدك الإلكتروني",
+  "address_details": "تفاصيل العنوان",
+  "family_details": "تفاصيل العائلة",
+  "country": "الدولة",
+  "pls_enter_country": "يرجى إدخال دولتك",
+  "state_emirates": "الولاية/الإمارة",
+  "pls_enter_state": "يرجى إدخال الولاية/الإمارة",
+  "city": "المدينة",
+  "pls_enter_city": "يرجى إدخال مدينتك",
+  "address_line": "سطر العنوان {title}",
+  "@address_line": {
+    "placeholders": {
+      "title": {
+        "type": "String",
+        "example": "example_title"
+      }
+    }
+  },
+  "specific_loc": "الموقع المحدد (فيلا، شارع، قطاع)",
+  "pls_enter_address": "يرجى إدخال عنوانك",
+  "area_neighbor": "المنطقة/الحي",
+  "zip_postal": "الرمز البريدي",
+  "pls_enter_zip_postal": "يرجى إدخال الرمز البريدي",
+  "permanent_address_detail": "تفاصيل العنوان الدائم",
+  "form_info_warning": "تأكد من الدقة قبل الإرسال",
+  "next": "التالي",
+  "residental_address_detail": "تفاصيل عنوان السكن",
+  "same_as_permanent": "نفس العنوان الدائم",
+  "family_detail": "تفاصيل العائلة",
+  "father_name": "اسم الأب",
+  "enter_father_name": "أدخل اسم الأب",
+  "pls_enter_father_name": "يرجى إدخال اسم الأب",
+  "mother_name": "اسم الأم",
+  "enter_mother_name": "أدخل اسم الأم",
+  "pls_enter_mother_name": "يرجى إدخال اسم الأم",
+  "granddad_name": "اسم الجد",
+  "enter_granddad_name": "أدخل اسم الجد",
+  "pls_enter_granddad_name": "يرجى إدخال اسم الجد",
+  "spouse_name": "اسم الزوج/الزوجة",
+  "enter_spouse_name": "أدخل اسم الزوج/الزوجة",
+  "identity_details": "تفاصيل الهوية",
+  "basic_info": "المعلومات الأساسية",
+  "document_type": "نوع الوثيقة",
+  "permanent_address": "العنوان الدائم",
+  "residental_address": "عنوان السكن",
+  "doc_number": "رقم الوثيقة",
+  "doc_issue_date": "تاريخ إصدار الوثيقة",
+  "press_for_exit": "اضغط مرة أخرى للخروج",
+  "pls_enter_both_dates": "يرجى إدخال كل من تاريخ البدء والانتهاء",
+  "no_future_dates": "لا يمكن اختيار تواريخ مستقبلية",
+  "no_start_before_after": "لا يمكن أن يكون تاريخ البدء بعد تاريخ الانتهاء",
+  "invalid_format": "تنسيق التاريخ غير صالح. يرجى استخدام {title}",
+  "@invalid_format": {
+    "placeholders": {
+      "title": {
+        "type": "String",
+        "example": "example_title"
+      }
+    }
+  },
+  "code_resent_success": "تم إعادة إرسال الرمز بنجاح",
+  "register_descrip": "نحتاج إلى إرسال رمز تحقق (OTP) لمصادقة رقمك.",
+  "have_promocode": "هل لديك رمز ترويجي؟",
+  "send_otp": "إرسال رمز التحقق",
+  "login_failed": "فشل تسجيل الدخول",
+  "error_occured": "حدث خطأ",
+  "enter_promocode": "أدخل رمز العرض",
+  "bio_change": "تم تغيير البيانات البيومترية",
+  "bio_change_descrip": "تم تغيير بصمتك أو بياناتك البيومترية. يرجى إعادة التحقق.",
+  "enable_bio": "تمكين تسجيل الدخول البيومتري",
+  "enable_bio_descrip": "يمكنك تسجيل الدخول باستخدام {title}. هل ترغب في تمكين ذلك؟",
+  "@enable_bio_descrip": {
+    "placeholders": {
+      "title": {
+        "type": "String",
+        "example": "مثال_العنوان"
+      }
+    }
+  },
+  "scan_login": "امسح لتسجيل الدخول",
+  "otp": "رمز التحقق",
+  "@otp": {},
+  "otp_verify": "التحقق من رمز التحقق",
+  "@otp_verify": {},
+  "pls_enter_otp": "يرجى إدخال رمز التحقق",
+  "@pls_enter_otp": {}
+
+}

@@ -13,7 +13,10 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
+import '../core/cubits/language_cubit/language_cubit.dart' as _i212;
 import '../core/cubits/theme_cubit/theme_cubit.dart' as _i138;
+import '../core/utils/localization/localization_service.dart' as _i743;
+import '../core/utils/localization/localization_support.dart' as _i705;
 import '../core/utils/navigation_service.dart' as _i937;
 import '../core/utils/shared_preferences/shared_prefs_module.dart' as _i712;
 import '../core/utils/shared_preferences/shared_prefs_service.dart' as _i769;
@@ -36,7 +39,12 @@ extension GetItInjectableX on _i174.GetIt {
       () => sharedPrefsModule.prefs,
       preResolve: true,
     );
+    gh.lazySingleton<_i212.LanguageCubit>(() => _i212.LanguageCubit());
     gh.lazySingleton<_i138.ThemeCubit>(() => _i138.ThemeCubit());
+    gh.lazySingleton<_i743.LocalizationService>(
+        () => _i743.LocalizationService());
+    gh.lazySingleton<_i705.LocalizationSupport>(
+        () => _i705.LocalizationSupport());
     gh.lazySingleton<_i937.NavigationService>(() => _i937.NavigationService());
     gh.lazySingleton<_i769.SharedPrefsService>(
         () => _i774.SharedPrefsServiceImpl(gh<_i460.SharedPreferences>()));

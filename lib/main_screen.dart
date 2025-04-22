@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_template/core/cubits/language_cubit/language_cubit.dart';
 import 'package:flutter_template/core/cubits/theme_cubit/theme_cubit.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
 import 'package:flutter_template/core/utils/global_bloc_provider.dart';
@@ -20,19 +21,28 @@ class MyApp extends StatelessWidget {
           providers: GlobalBlocProvider().globalBlocProviders,
           child: BlocBuilder<ThemeCubit, ThemeMode>(
             builder: (context, theme) {
-              return AnimatedTheme(
-                data: theme == ThemeMode.light
-                    ? GlobalTheme.lightThemeData
-                    : GlobalTheme.darkThemeData,
-                duration: const Duration(milliseconds: 500),
-                child: MaterialApp.router(
-                  title: 'Siddhartha',
-                  theme: GlobalTheme.lightThemeData,
-                  darkTheme: GlobalTheme.darkThemeData,
-                  routerConfig: RouteConfig.router,
-                  themeMode: theme,
-                  // home: MyHomePage(title: environment),
-                ),
+              return BlocBuilder<LanguageCubit, Locale>(
+                builder: (context, language) {
+                  return AnimatedTheme(
+                    data: theme == ThemeMode.light
+                        ? GlobalTheme.lightThemeData
+                        : GlobalTheme.darkThemeData,
+                    duration: const Duration(milliseconds: 500),
+                    child: MaterialApp.router(
+                      debugShowCheckedModeBanner: false,
+                      title: 'Siddhartha',
+                      theme: GlobalTheme.lightThemeData,
+                      darkTheme: GlobalTheme.darkThemeData,
+                      routerConfig: RouteConfig.router,
+                      themeMode: theme,
+                      localizationsDelegates:
+                          AppLocalizations.localizationsDelegates,
+                      supportedLocales: AppLocalizations.supportedLocales,
+                      locale: language,
+                      // home: MyHomePage(title: environment),
+                    ),
+                  );
+                },
               );
             },
           ),
@@ -41,5 +51,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-

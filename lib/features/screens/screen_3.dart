@@ -1,4 +1,5 @@
 import 'package:flutter_template/core/utils/app_imports.dart';
+import 'package:flutter_template/core/utils/localization/localization_service.dart';
 
 class Screen3 extends StatefulWidget {
   const Screen3({super.key});
@@ -14,9 +15,7 @@ class _Screen1State extends State<Screen3> {
       appBar: AppBar(
         title: const TextWidget('Title'),
       ),
-      body: Center(
-        child: const Text('Hello, World3')
-      ),
+      body: Center(child: TextWidget(l10.account_information)),
     );
   }
 }
