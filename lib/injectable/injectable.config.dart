@@ -13,10 +13,12 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
-import '../cubits/theme_cubit/theme_cubit.dart' as _i515;
-import '../utils/shared_preferences/shared_prefs_module.dart' as _i16;
-import '../utils/shared_preferences/shared_prefs_service.dart' as _i947;
-import '../utils/shared_preferences/shared_prefs_service_impl.dart' as _i634;
+import '../core/cubits/theme_cubit/theme_cubit.dart' as _i138;
+import '../core/utils/navigation_service.dart' as _i937;
+import '../core/utils/shared_preferences/shared_prefs_module.dart' as _i712;
+import '../core/utils/shared_preferences/shared_prefs_service.dart' as _i769;
+import '../core/utils/shared_preferences/shared_prefs_service_impl.dart'
+    as _i774;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -34,11 +36,12 @@ extension GetItInjectableX on _i174.GetIt {
       () => sharedPrefsModule.prefs,
       preResolve: true,
     );
-    gh.lazySingleton<_i515.ThemeCubit>(() => _i515.ThemeCubit());
-    gh.lazySingleton<_i947.SharedPrefsService>(
-        () => _i634.SharedPrefsServiceImpl(gh<_i460.SharedPreferences>()));
+    gh.lazySingleton<_i138.ThemeCubit>(() => _i138.ThemeCubit());
+    gh.lazySingleton<_i937.NavigationService>(() => _i937.NavigationService());
+    gh.lazySingleton<_i769.SharedPrefsService>(
+        () => _i774.SharedPrefsServiceImpl(gh<_i460.SharedPreferences>()));
     return this;
   }
 }
 
-class _$SharedPrefsModule extends _i16.SharedPrefsModule {}
+class _$SharedPrefsModule extends _i712.SharedPrefsModule {}

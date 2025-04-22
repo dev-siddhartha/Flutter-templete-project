@@ -54,6 +54,9 @@ dependencies:
   # for handling nested widgets - used in global bloc provider
   nested: ^1.0.0
 
+   # for routing
+  go_router: ^14.6.3
+
 
 dev_dependencies:
   flutter_test:
