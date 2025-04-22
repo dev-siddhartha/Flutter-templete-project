@@ -1,6 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
-import 'dart:ui';
 
 @lazySingleton
 class LanguageCubit extends Cubit<Locale> {

@@ -62,6 +62,22 @@ dependencies:
 
    # for routing
   go_router: ^14.6.3
+    # for api request
+  api_service:
+    path: packages/api_service
+     #dio
+  dio: ^5.8.0+1
+  # dartz
+  dartz: ^0.10.1
+   # collection
+  collection: ^1.19.0
+   # for permission
+  permission_handler: ^11.3.1
+
+  # for device info
+  device_info_plus: ^11.3.0
+  unique_identifier: ^0.4.0 # for getting unique identifier. used for assigning fingerprint
+  package_info_plus: ^8.2.1 # for getting package name. used for force update
 
 
 dev_dependencies:
