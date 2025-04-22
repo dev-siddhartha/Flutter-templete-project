@@ -1,4 +1,5 @@
 import 'package:flutter_template/core/utils/app_imports.dart';
+import 'package:flutter_template/core/utils/localization/localization_service.dart';
 
 class Screen2 extends StatefulWidget {
   const Screen2({super.key});
@@ -15,7 +16,7 @@ class _Screen1State extends State<Screen2> {
         title: const TextWidget('Title'),
       ),
       body: Center(
-        child: const Text('Hello, World2').onTap(
+        child:  TextWidget(l10.account).onTap(
           () => getIt<NavigationService>().navigateTo(RouteNames.screen3),
         ),
       ),
