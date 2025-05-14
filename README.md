@@ -24,11 +24,8 @@ This Flutter project includes the following features and components:
   - Environment configurations.
   - Theme settings.
   - Preference keys.
-
-## Roadmap
-### Upcoming Features
 - **Localization Support**: Implement multi-language support.
-- **Routing Improvements**: Enhance navigation structure with a robust routing mechanism.
+- **Routing Improvements**: Enhance navigation structure with a robust routing mechanism - goRouter.
 
 ## Getting Started
 1. Clone the repository.
