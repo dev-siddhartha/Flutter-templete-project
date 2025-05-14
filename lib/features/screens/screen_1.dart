@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_template/core/constants/environment_config.dart';
 import 'package:flutter_template/core/cubits/language_cubit/language_cubit.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
