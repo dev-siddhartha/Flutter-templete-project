@@ -71,5 +71,20 @@
                 "lib/main_prod.dart"
             ]
         },
+        {
+            "name": "Web Launch dev",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_dev.dart",
+            "flutterMode": "debug",
+            "args": [
+                "--flavor",
+                "prod",
+                "--target",
+                "lib/main_prod.dart",
+                "--web-port",
+                "3003"
+            ]
+        },
     ]
 }

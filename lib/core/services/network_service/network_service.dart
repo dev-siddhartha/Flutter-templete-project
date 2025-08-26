@@ -1,6 +1,5 @@
-import 'package:api_service/api_service.dart';
+import 'package:api_request_handler/api_service.dart';
 import 'package:flutter_template/core/type_defs.dart';
-export 'package:api_service/api_service.dart';
 export 'package:dio/dio.dart';
 
 abstract class NetworkService {

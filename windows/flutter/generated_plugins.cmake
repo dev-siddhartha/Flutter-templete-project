@@ -4,6 +4,7 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   permission_handler_windows
+  unique_device_identifier
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

@@ -1,5 +1,8 @@
 # Flutter templete
-This is a templete project with all basic setup completed
+This is a templete project with all basic setup completed and support for web
+
+Current Flutter Version -> 3.32.6
+Current Dart Version -> 3.8.1
 
 ## What's Included?
 This Flutter project includes the following features and components:
@@ -12,6 +15,7 @@ This Flutter project includes the following features and components:
 - **State Management**: Utilizes `Flutter Bloc` for efficient and scalable state management.
 
 ### Components
+- **Device Info Service**: Get all required device data for android, ios and web.
 - **App Imports**: Centralized file containing all basic imports.
 - **App Extensions**:
   - Dark mode support.

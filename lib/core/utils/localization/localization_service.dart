@@ -1,4 +1,3 @@
-
 import 'package:flutter_template/core/utils/app_imports.dart';
 
 @lazySingleton
