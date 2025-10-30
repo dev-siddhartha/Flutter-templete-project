@@ -4,136 +4,125 @@ import 'package:flutter_template/core/utils/app_imports.dart';
 class LightTheme {
   static final Color lightFocusColor = Colors.black.withValues(alpha: 0.12);
 
-  static const ColorScheme lightColorScheme = ColorScheme(
+  static ColorScheme lightColorScheme = ColorScheme(
     brightness: Brightness.light,
-    primary: AppColors.primaryColorLight,
-    onPrimary: AppColors.primaryColorLight,
-    secondary: AppColors.secondaryColorLight,
-    onSecondary: AppColors.secondaryColorLight,
-    error: AppColors.errorColorLight,
-    onError: AppColors.errorColorLight,
-    surface: AppColors.scaffoldBgColorLight,
-    onSurface: AppColors.scaffoldBgColorLight,
+    primary: AppColors.primaryColor,
+    onPrimary: AppColors.primaryColor,
+    secondary: AppColors.secondaryColor,
+    onSecondary: AppColors.secondaryColor,
+    error: AppColors.errorColor,
+    onError: AppColors.errorColor,
+    surface: AppColors.whiteColor,
+    onSurface: AppColors.whiteColor,
   );
 
   static TextTheme lightTextTheme = TextTheme(
     displayLarge: TextStyle(
-      // fontFamily: ThemeFamilyConstant.poppins,
       fontWeight: FontWeight.w500,
       fontSize: 28.sp,
       letterSpacing: 0.2,
-      color: AppColors.txtDisplayColorLight,
+      color: AppColors.grey[900],
     ),
     displayMedium: TextStyle(
-      // fontFamily: ThemeFamilyConstant.poppins,
       fontWeight: FontWeight.w500,
       fontSize: 24.sp,
-      color: AppColors.txtDisplayColorLight,
+      color: AppColors.grey[900],
       letterSpacing: 0.2,
     ),
     displaySmall: TextStyle(
-      // fontFamily: ThemeFamilyConstant.poppins,
       fontWeight: FontWeight.w500,
       fontSize: 22.sp,
-      color: AppColors.txtDisplayColorLight,
+      color: AppColors.grey[900],
       letterSpacing: 0.2,
     ),
     headlineLarge: TextStyle(
       fontWeight: FontWeight.w500,
       letterSpacing: .2,
       fontSize: 16.sp,
-      color: AppColors.txtHeadlineColorLight,
+      color: AppColors.grey[900],
     ),
     headlineMedium: TextStyle(
-      // fontFamily: ThemeFamilyConstant.poppins,
       fontWeight: FontWeight.w500,
       letterSpacing: 0.2,
       fontSize: 14.sp,
-      color: AppColors.txtHeadlineColorLight,
+      color: AppColors.grey[900],
     ),
     headlineSmall: TextStyle(
-      // fontFamily: ThemeFamilyConstant.poppins,
       letterSpacing: 0.2,
       fontWeight: FontWeight.w500,
       fontSize: 12.sp,
-      color: AppColors.txtHeadlineColorLight,
+      color: AppColors.grey[900],
     ),
     titleLarge: TextStyle(
-      // fontFamily: ThemeFamilyConstant.poppins,
       letterSpacing: 0.2,
       fontWeight: FontWeight.w500,
       fontSize: 18.sp,
-      color: AppColors.txtTitleColorLight,
+      color: AppColors.grey[900],
     ),
     titleMedium: TextStyle(
-      // fontFamily: ThemeFamilyConstant.poppins,
       letterSpacing: 0.2,
       fontWeight: FontWeight.w500,
       fontSize: 16.sp,
-      color: AppColors.txtTitleColorLight,
+      color: AppColors.grey[900],
     ),
     titleSmall: TextStyle(
-      // fontFamily: ThemeFamilyConstant.poppins,
       letterSpacing: 0.2,
       fontWeight: FontWeight.w500,
       fontSize: 14.sp,
-      color: AppColors.txtTitleColorLight,
+      color: AppColors.grey[900],
     ),
     bodyLarge: TextStyle(
-      // fontFamily: ThemeFamilyConstant.poppins,
       fontWeight: FontWeight.w400,
       letterSpacing: 0.2,
       fontSize: 16.sp,
-      color: AppColors.txtBodyColorLight,
+      color: AppColors.grey[900],
     ),
     bodyMedium: TextStyle(
-      // fontFamily: ThemeFamilyConstant.poppins,
       letterSpacing: 0.2,
       fontWeight: FontWeight.w400,
       fontSize: 14.sp,
-      color: AppColors.txtBodyColorLight,
+      color: AppColors.grey[900],
     ),
     bodySmall: TextStyle(
-      // fontFamily: ThemeFamilyConstant.poppins,
       fontWeight: FontWeight.w400,
       letterSpacing: 0.2,
       fontSize: 12.sp,
-      color: AppColors.txtBodyColorLight,
+      color: AppColors.grey[900],
     ),
   );
 
   static InputDecorationTheme lightInputDecorationTheme = InputDecorationTheme(
-      suffixIconColor: AppColors.blackColor,
-      border: globalBorder(color: AppColors.borderColorLight),
-      errorBorder: globalBorder(color: AppColors.errorColorLight),
-      focusedBorder: globalBorder(color: AppColors.borderColorLight),
-      enabledBorder: globalBorder(color: AppColors.borderColorLight),
-      focusedErrorBorder: globalBorder(color: AppColors.errorColorLight),
-      errorStyle: const TextStyle(color: AppColors.errorColorLight),
-      hintStyle: const TextStyle(
-        color: AppColors.txtBodyColorLight,
-      ),
-      labelStyle: const TextStyle(color: AppColors.txtBodyColorLight));
-
-  static AppBarTheme lightAppBarTheme = const AppBarTheme(
-    backgroundColor: AppColors.scaffoldBgColorLight,
-    foregroundColor: AppColors.scaffoldBgColorLight,
-    // shadowColor: AppColors.scaffoldBgColorLight,
-    surfaceTintColor: AppColors.scaffoldBgColorLight,
-    elevation: 0,
-    iconTheme: IconThemeData(color: AppColors.iconColor),
-    actionsIconTheme: IconThemeData(color: AppColors.iconColor),
+    suffixIconColor: AppColors.blackColor,
+    border: globalBorder(color: AppColors.grey[100]),
+    errorBorder: globalBorder(color: AppColors.error[400]),
+    focusedBorder: globalBorder(color: AppColors.grey[100]),
+    enabledBorder: globalBorder(color: AppColors.grey[100]),
+    focusedErrorBorder: globalBorder(color: AppColors.error[400]),
+    errorStyle: TextStyle(color: AppColors.error[400]),
+    hintStyle: TextStyle(
+      color: AppColors.grey[900],
+    ),
+    labelStyle: TextStyle(color: AppColors.grey[900]),
   );
 
-  static BottomAppBarTheme lightBottomAppBarTheme = const BottomAppBarTheme(
-    color: AppColors.scaffoldBgColorLight,
+  static AppBarTheme lightAppBarTheme = AppBarTheme(
+    backgroundColor: AppColors.whiteColor,
+    foregroundColor: AppColors.whiteColor,
+    surfaceTintColor: AppColors.whiteColor,
+    elevation: 0,
+    iconTheme: IconThemeData(color: AppColors.grey[700]),
+    actionsIconTheme: IconThemeData(color: AppColors.grey[700]),
+  );
+
+  static BottomAppBarTheme lightBottomAppBarTheme = BottomAppBarTheme(
+    color: AppColors.whiteColor,
     elevation: 0,
   );
 
   static BottomNavigationBarThemeData lightBottomNavigationBarTheme =
-      const BottomNavigationBarThemeData(
-    backgroundColor: AppColors.scaffoldBgColorLight,
-    selectedItemColor: AppColors.primaryColorLight,
-    unselectedItemColor: AppColors.txtBodyColorLight,
+      BottomNavigationBarThemeData(
+    backgroundColor: AppColors.whiteColor,
+    selectedItemColor: AppColors.primaryColor,
+    unselectedItemColor: AppColors.grey[900],
   );
 }

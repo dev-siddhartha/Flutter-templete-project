@@ -99,7 +99,7 @@ class _Screen1State extends State<Screen1> {
             dropdownColor: AppColors.blackColor,
             isDense: true,
             underline: const SizedBox.shrink(),
-            icon: const Icon(
+            icon: Icon(
               Icons.keyboard_arrow_down,
               color: AppColors.whiteColor,
             ),

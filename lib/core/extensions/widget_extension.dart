@@ -1,12 +1,22 @@
+import 'dart:io';
+
+import 'package:flutter/services.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
 
 extension WidgetExtension on Widget {
   //for tapping
-  GestureDetector onTap(
-    GestureTapCallback callback,
-  ) =>
-      GestureDetector(
-        onTap: callback,
+  InkWell onTap(GestureTapCallback callback, {bool haptics = false}) => InkWell(
+        onTap: () {
+          if (haptics) {
+            if (Platform.isIOS) {
+              HapticFeedback.heavyImpact();
+            } else {
+              HapticFeedback.vibrate();
+            }
+          }
+          callback();
+        },
+        splashColor: Colors.transparent,
         child: this,
       );
 

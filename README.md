@@ -1,8 +1,8 @@
 # Flutter templete
 This is a templete project with all basic setup completed and support for web
 
-Current Flutter Version -> 3.32.6
-Current Dart Version -> 3.8.1
+Current Flutter Version -> 3.35.7
+Current Dart Version -> 3.9.2
 
 ## What's Included?
 This Flutter project includes the following features and components:
@@ -21,6 +21,7 @@ This Flutter project includes the following features and components:
   - Dark mode support.
   - String casing utilities.
   - TextStyle extensions.
+  - Base API Extensions - Parse data from map or list to Given Object or List<Object>
 - **Text Widget**: A reusable widget to manage text styling and size consistency.
 - **Parse Service**: Handles type parsing with error management.
 - **Constants**:
@@ -30,6 +31,53 @@ This Flutter project includes the following features and components:
   - Preference keys.
 - **Localization Support**: Implement multi-language support.
 - **Routing Improvements**: Enhance navigation structure with a robust routing mechanism - goRouter.
+- **API Service**:
+  - Handles fetching of normal or paginated data and parse into [Object] or [PaginatedModel] with help of [base_api_extension].
+
+### Example Of Api Service: Using flutter bloc
+**Use this inside your bloc for api calling**
+
+# Pagination API:
+
+```dart
+Future<void> _getPaginatedDataExample(
+    GetPaginatedDataEvent event, Emitter<PaginatedDataState> emit) async {
+  if (event.refresh) {
+    emit(state.copyWith(
+        paginatedDataState: const PaginationLoadingState()));
+  }
+
+  if (state.paginatedDataState.currentPage <=
+      state.paginatedDataState.lastPage) {
+    PaginationState<PaginatedDataModel> dataPaginationState =
+        await ApiService.fetchPaginatedData<PaginatedDataModel>(
+      currentState: state.paginatedDataState,
+      apiCall: () => getIt<ApiRepo>().getPaginatedDataApiSample(
+        pageNo: state.paginatedDataState.currentPage,
+      ),
+      fromJson: PaginatedDataModel.fromJson,
+    );
+
+    emit(state.copyWith(paginatedDataState: dataPaginationState));
+  }
+}
+```
+
+# Normal API:
+
+```dart
+Future<void> _getNormalDataExample(GetNormalEvent event, Emitter<NormalDataState> emit) async {
+  emit(state.copyWith(normalDataState: const NormalLoadingState()));
+
+  final result = await ApiService.fetchNormalData(
+    apiCall: () =>
+        getIt<ApiRepo>().getNormalDataApiSample(someParams: event.someParams),
+    fromJson: NormalDataModel.fromJson,
+  );
+  emit(state.copyWith(normalDataState: result));
+}
+```
+
 
 ## Getting Started
 1. Clone the repository.

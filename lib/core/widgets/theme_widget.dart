@@ -38,7 +38,6 @@ class _ThemeWidgetState extends State<ThemeWidget> {
           child: Container(
             width: double.infinity,
             decoration: BoxDecoration(
-              // color: AppColors.whiteColor,
               borderRadius: BorderRadius.circular(20.r),
             ),
             child: Column(
@@ -99,8 +98,6 @@ class _ThemeWidgetState extends State<ThemeWidget> {
               10.horizontalSpace,
               const TextWidget(
                 "Select Theme",
-                textType: TextType.normal,
-                color: AppColors.settingTitleColor,
               ),
               const Spacer(),
               ValueListenableBuilder(
@@ -113,7 +110,6 @@ class _ThemeWidgetState extends State<ThemeWidget> {
               Icon(
                 Icons.arrow_forward_ios,
                 size: 16.r,
-                color: AppColors.settingTitleColor,
               )
             ],
           ).onTap(

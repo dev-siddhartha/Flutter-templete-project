@@ -2,13 +2,30 @@ import 'package:flutter_template/core/utils/app_imports.dart';
 
 /// Enum for text style types
 enum TextType {
-  normal,
+  /// fontsize: 14, fontweight: 400
+  body,
+
+  /// fontsize: 16, fontweight: 400
+  bodyLarge,
+
+  /// fontsize: 18, fontweight: 500
   title,
+
+  /// fontsize: 16, fontweight: 500
   subTitle,
+
+  /// fontsize: 22, fontweight: 500
   heading,
+
+  /// fontsize: 20, fontweight: 500
   subHeading,
+
+  /// fontsize: 26, fontweight: 500
   display,
+
+  /// fontsize: 24, fontweight: 500
   displaySmall,
+
   custom,
 }
 
@@ -50,7 +67,7 @@ class TextWidget extends StatelessWidget {
     this.textAlign,
     this.maxLines,
     this.overflow,
-    this.textType = TextType.normal,
+    this.textType = TextType.body,
     this.textScaler,
     this.color,
     this.textOptions,
@@ -78,31 +95,42 @@ class TextWidget extends StatelessWidget {
 
     switch (textType) {
       case TextType.title:
-        return Theme.of(context).textTheme.titleMedium!;
+        return Theme.of(context).textTheme.titleMedium!.copyWith(color: color);
       case TextType.subTitle:
-        return Theme.of(context).textTheme.titleSmall!;
+        return Theme.of(context).textTheme.titleSmall!.copyWith(color: color);
       case TextType.heading:
-        return Theme.of(context).textTheme.headlineMedium!;
+        return Theme.of(context)
+            .textTheme
+            .headlineMedium!
+            .copyWith(color: color);
       case TextType.subHeading:
-        return Theme.of(context).textTheme.headlineSmall!;
+        return Theme.of(context)
+            .textTheme
+            .headlineSmall!
+            .copyWith(color: color);
       case TextType.display:
-        return Theme.of(context).textTheme.displayMedium!;
+        return Theme.of(context)
+            .textTheme
+            .displayMedium!
+            .copyWith(color: color);
       case TextType.displaySmall:
-        return Theme.of(context).textTheme.displaySmall!;
+        return Theme.of(context).textTheme.displaySmall!.copyWith(color: color);
       case TextType.custom:
         return _customStyle(context, defaultColor);
-      case TextType.normal:
-        return Theme.of(context).textTheme.bodyMedium!;
+      case TextType.body:
+        return Theme.of(context).textTheme.bodyMedium!.copyWith(color: color);
+      case TextType.bodyLarge:
+        return Theme.of(context)
+            .textTheme
+            .bodyLarge!
+            .copyWith(color: color, fontWeight: FontWeight.w500);
     }
   }
 
   /// Style generator for custom text options
   TextStyle _customStyle(BuildContext context, Color defaultColor) {
-    final isPortrait =
-        MediaQuery.of(context).orientation == Orientation.portrait;
-
     return context.getFontStyle(
-      fontSize: textOptions?.fontSize ?? (isPortrait ? 14 : 14.5),
+      fontSize: textOptions?.fontSize ?? 14.sp,
       fontWeight: textOptions?.fontWeight ?? FontWeight.w400,
       fontStyle: textOptions?.fontStyle,
       height: textOptions?.height,
