@@ -38,7 +38,7 @@ dependencies:
   # for env files
   flutter_dotenv: ^6.0.0
 
-   # for localization
+  # for localization
   flutter_localizations:
     sdk: flutter
   intl: ^0.20.2
@@ -48,7 +48,7 @@ dependencies:
 
   # for dependency injection
   get_it: ^8.2.0
-  injectable: ^2.5.1
+  injectable: ^2.5.2
 
   # for local storage
   shared_preferences: ^2.5.3
@@ -59,43 +59,36 @@ dependencies:
   # for handling nested widgets - used in global bloc provider
   nested: ^1.0.0
 
-   # for routing
-  go_router: ^16.2.0
+  # for routing
+  go_router: ^16.3.0
 
   # for api service
-  api_request_handler: ^0.0.3
-
-  #dio
+  api_request_handler: ^0.0.4
   dio: ^5.9.0
 
   # dartz
   dartz: ^0.10.1
-  
+
   # collection
   collection: ^1.19.1
-  
+
   # for permission
   permission_handler: ^12.0.1
 
   # for device info
-  device_info_plus: ^11.5.0
+  device_info_plus: ^12.2.0
   unique_device_identifier: ^2.0.4 # for getting unique identifier. used for assigning fingerprint
-  package_info_plus: ^8.3.1 # for getting package name. used for force update
+  package_info_plus: ^9.0.0 # for getting package name. used for force update
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^6.0.0
   
-  build_runner: ^2.4.14
-  injectable_generator: ^2.7.0
+  build_runner: ^2.10.1
+  injectable_generator: ^2.9.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
