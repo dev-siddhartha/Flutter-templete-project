@@ -36,6 +36,12 @@ extension DarkMode on BuildContext {
   }
 }
 
+extension PrimaryColor on BuildContext {
+  Color get primaryColor {
+    return Theme.of(this).primaryColor;
+  }
+}
+
 extension StringCasingExtension on String {
   String toCapitalized() =>
       length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';

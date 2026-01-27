@@ -4,13 +4,13 @@ import 'package:flutter_template/core/cubits/theme_cubit/theme_cubit.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
 import 'package:flutter_template/core/utils/global_bloc_provider.dart';
 import 'package:flutter_template/core/utils/theme/global_theme.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.environment});
 
   final String environment;
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
                         : GlobalTheme.darkThemeData,
                     duration: const Duration(milliseconds: 500),
                     child: MaterialApp.router(
+                      builder: FToastBuilder(),
                       debugShowCheckedModeBanner: false,
                       title: 'Siddhartha',
                       theme: GlobalTheme.lightThemeData,
