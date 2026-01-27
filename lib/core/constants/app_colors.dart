@@ -16,62 +16,65 @@ class AppColors {
   static const CustomColorSwatch primary = CustomColorSwatch(
     500,
     {
-      50: Color(0xFFEFF6FF),
-      100: Color(0xFFDBEAFE),
-      200: Color(0xFFBFDBFE),
-      300: Color(0xFF94C4FC),
-      400: Color(0xFF508EF6),
-      500: Color(0xFF1F3A8A),
-      600: Color(0xFF192E6E),
-      700: Color(0xFF101D45),
-      800: Color(0xFF08142F),
-      900: Color(0xFF040A17),
+      50: Color(0xFFe6f9f5),
+      100: Color(0xFFb0ebe1),
+      200: Color(0xFF8ae2d3),
+      300: Color(0xFF54d4bf),
+      400: Color(0xFF33ccb2),
+      500: Color(0xFF00bf9f),
+      600: Color(0xFF00ae91),
+      700: Color(0xFF008871),
+      800: Color(0xFF006957),
+      900: Color(0xFF005043),
     },
   );
 
-  /// for now almost the same code as primary
-  static const CustomColorSwatch secondary = CustomColorSwatch(500, {
-    50: Color(0xFFEFF6FF),
-    100: Color(0xFFDBEAFE),
-    200: Color(0xFFBFDBFE),
-    300: Color(0xFF94C4FC),
-    400: Color(0xFF508EF6),
-    500: Color(0xFF10B981),
-    600: Color(0xFF192E6E),
-    700: Color(0xFF101D45),
-    800: Color(0xFF08142F),
-    900: Color(0xFF040A17),
-  });
-
-  static const CustomColorSwatch error = CustomColorSwatch(
+  /// for now same code as primary
+  static const CustomColorSwatch secondary = CustomColorSwatch(
     500,
     {
-      50: Color(0xFFFEF2F2),
-      100: Color(0xFFF8D7DA),
-      200: Color(0xFFF1AEB5),
-      300: Color(0xFFEA868F),
-      400: Color(0xFFE35D6A),
-      500: Color(0xFFDC3545),
-      600: Color(0xFFB02A37),
-      700: Color(0xFF842029),
-      800: Color(0xFF58151C),
-      900: Color(0xFF2C0B0E),
+      50: Color(0xFFe6f9f5),
+      100: Color(0xFFb0ebe1),
+      200: Color(0xFF8ae2d3),
+      300: Color(0xFF54d4bf),
+      400: Color(0xFF33ccb2),
+      500: Color(0xFF00bf9f),
+      600: Color(0xFF00ae91),
+      700: Color(0xFF008871),
+      800: Color(0xFF006957),
+      900: Color(0xFF005043),
     },
   );
 
   static const CustomColorSwatch success = CustomColorSwatch(
     500,
     {
-      50: Color(0xFFF1FCF5),
-      100: Color(0xFFD1E7DD),
-      200: Color(0xFFA3CFBB),
-      300: Color(0xFF75B798),
-      400: Color(0xFF479F76),
-      500: Color(0xFF198754),
-      600: Color(0xFF146C43),
-      700: Color(0xFF0f5132),
-      800: Color(0xFF0A3622),
-      900: Color(0xFF051B11),
+      50: Color(0xFFe9f9ef),
+      100: Color(0xFFbaedcd),
+      200: Color(0xFF99e4b5),
+      300: Color(0xFF6bd893),
+      400: Color(0xFF4ed17e),
+      500: Color(0xFF22c55e),
+      600: Color(0xFF1fb356),
+      700: Color(0xFF188c43),
+      800: Color(0xFF136c34),
+      900: Color(0xFF0e5327),
+    },
+  );
+
+  static const CustomColorSwatch error = CustomColorSwatch(
+    500,
+    {
+      50: Color(0xFFfbeae8),
+      100: Color(0xFFf3beb8),
+      200: Color(0xFFed9e95),
+      300: Color(0xFFe57265),
+      400: Color(0xFFe05647),
+      500: Color(0xFFd82c19),
+      600: Color(0xFFc52817),
+      700: Color(0xFF991f12),
+      800: Color(0xFF77180e),
+      900: Color(0xFF5b120b),
     },
   );
 
@@ -123,14 +126,28 @@ class AppColors {
     },
   );
 
-  /// light theme colors
-  static Color primaryColor = primary[500];
+  /// dark theme colors (default)
+  static Color primaryColor = primary[400]; // Lighter primary for dark theme
   static Color secondaryColor = secondary[400];
-  static Color greyColor = grey[600];
-  static Color errorColor = error[500];
-  static Color successColor = success[500];
-  static Color warningColor = warning[500];
-  static Color infoColor = info[500];
-  static Color blackColor = Colors.black;
-  static Color whiteColor = Colors.white;
+  static Color greyColor = grey[300]; // Lighter grey for dark theme
+  static Color errorColor = error[400]; // Lighter error for dark theme
+  static Color successColor = success[400]; // Lighter success for dark theme
+  static Color warningColor = warning[400]; // Lighter warning for dark theme
+  static Color infoColor = info[400]; // Lighter info for dark theme
+  static Color blackColor = const Color(0xFF000000);
+  static Color whiteColor = const Color(0xFFFFFFFF);
+
+  // Light theme specific colors
+  static Color lightSurface = whiteColor;
+  static Color lightSurfaceVariant = grey[100];
+  static Color lightTextPrimary = grey[900];
+  static Color lightTextSecondary = grey[800];
+  static Color lightTextTertiary = grey[700];
+
+  // Dark theme specific colors
+  static Color darkSurface = const Color.fromARGB(255, 2, 0, 6);
+  static Color darkSurfaceVariant = grey[700];
+  static Color darkTextPrimary = const Color(0xFFFFFFFF);
+  static Color darkTextSecondary = const Color(0xFFB0B0B0);
+  static Color darkTextTertiary = const Color(0xFF808080);
 }

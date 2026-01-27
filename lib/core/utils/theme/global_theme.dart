@@ -46,12 +46,12 @@ class GlobalTheme {
       inputDecorationTheme: colorScheme.brightness == Brightness.light
           ? LightTheme.lightInputDecorationTheme
           : DarkTheme.darkInputDecorationTheme,
-      // bottomAppBarTheme: colorScheme.brightness == Brightness.light
-      //     ? LightTheme.lightBottomAppBarTheme
-      //     : DarkTheme.darkBottomAppBarTheme,
       bottomNavigationBarTheme: colorScheme.brightness == Brightness.light
           ? LightTheme.lightBottomNavigationBarTheme
           : DarkTheme.darkBottomNavigationBarTheme,
+      dividerTheme: colorScheme.brightness == Brightness.light
+          ? LightTheme.lightDividerTheme
+          : DarkTheme.darkDividerTheme,
     );
   }
 

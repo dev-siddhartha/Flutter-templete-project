@@ -1,7 +1,8 @@
 import 'package:flutter_template/core/utils/app_imports.dart';
-import 'package:flutter_template/features/screens/screen_1.dart';
-import 'package:flutter_template/features/screens/screen_2.dart';
-import 'package:flutter_template/features/screens/screen_3.dart';
+import 'package:flutter_template/features/dashboard/presentation/screens/dashboard_screen.dart';
+import 'package:flutter_template/features/home/presentation/screens/home_screen.dart';
+import 'package:flutter_template/features/history/presentation/screens/history_screen.dart';
+import 'package:flutter_template/features/profile/presentation/screens/profile_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class RouteConfig {
@@ -9,10 +10,31 @@ class RouteConfig {
     navigatorKey: NavigationService.rootNavigatorKey,
     initialLocation: RouteNames.initialRoute,
     routes: [
-      GoRoute(path: RouteNames.initialRoute,name: RouteNames.initialRoute, builder: (context, state) => const Screen1(),),
-      GoRoute(path: RouteNames.screen3,name: RouteNames.screen3, builder: (context, state) => const Screen3(),),
-      GoRoute(path: RouteNames.screen2,name: RouteNames.screen2, builder: (context, state) => const Screen2(),),
-
-  ],
+      GoRoute(
+        path: RouteNames.initialRoute,
+        name: RouteNames.initialRoute,
+        builder: (context, state) => const DashboardScreen(),
+      ),
+      GoRoute(
+        path: RouteNames.dashboardRoute,
+        name: RouteNames.dashboardRoute,
+        builder: (context, state) => const DashboardScreen(),
+      ),
+      GoRoute(
+        path: RouteNames.homeScreenRoute,
+        name: RouteNames.homeScreenRoute,
+        builder: (context, state) => const HomeScreen(),
+      ),
+      GoRoute(
+        path: RouteNames.historyScreenRoute,
+        name: RouteNames.historyScreenRoute,
+        builder: (context, state) => const HistoryScreen(),
+      ),
+      GoRoute(
+        path: RouteNames.profileScreenRoute,
+        name: RouteNames.profileScreenRoute,
+        builder: (context, state) => const ProfileScreen(),
+      ),
+    ],
   );
 }

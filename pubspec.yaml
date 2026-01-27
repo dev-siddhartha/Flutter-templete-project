@@ -81,6 +81,9 @@ dependencies:
   unique_device_identifier: ^2.0.4 # for getting unique identifier. used for assigning fingerprint
   package_info_plus: ^9.0.0 # for getting package name. used for force update
 
+  fluttertoast: ^9.0.0
+  connectivity_plus: ^7.0.0
+
 
 dev_dependencies:
   flutter_test:

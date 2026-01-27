@@ -6,5 +6,4 @@ class LocalizationService {
       AppLocalizations.of(getIt<NavigationService>().getNavigationContext());
 }
 
-AppLocalizations get l10 =>
-    AppLocalizations.of(getIt<NavigationService>().getNavigationContext())!;
+AppLocalizations l10(BuildContext context) => AppLocalizations.of(context)!;
