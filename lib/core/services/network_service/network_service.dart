@@ -1,6 +1,7 @@
 import 'package:api_request_handler/api_service.dart';
 import 'package:flutter_template/core/type_defs.dart';
 export 'package:dio/dio.dart';
+export 'package:api_request_handler/api_service.dart';
 
 abstract class NetworkService {
   Future<void> initilizeNetworkService();

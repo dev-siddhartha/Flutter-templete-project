@@ -52,6 +52,7 @@ dependencies:
 
   # for local storage
   shared_preferences: ^2.5.3
+  flutter_secure_storage: ^10.0.0
 
   # for state management
   flutter_bloc: ^9.1.1

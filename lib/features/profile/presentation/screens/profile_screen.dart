@@ -1,10 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_template/core/cubits/language_cubit/language_cubit.dart';
 import 'package:flutter_template/core/cubits/theme_cubit/theme_cubit.dart';
+import 'package:flutter_template/core/initial_app_mixin.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
 import 'package:flutter_template/core/utils/localization/localization_service.dart';
 import 'package:flutter_template/core/utils/localization/localization_support.dart';
 import 'package:flutter_template/core/widgets/app_bar_widget.dart';
+import 'package:flutter_template/core/widgets/buttons/input_button.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -85,6 +87,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             _buildThemeSection(),
             _buildLanguageSection(),
+            const Spacer(),
+            _buildLogout(),
           ],
         ),
       ),
@@ -95,7 +99,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return BlocBuilder<ThemeCubit, ThemeMode>(
       builder: (context, state) {
         return SwitchListTile(
-          title: const TextWidget('Dark Mode', textType: TextType.bodyLarge),
+          title:
+              TextWidget(l10(context).dark_mode, textType: TextType.bodyLarge),
           value: state == ThemeMode.dark,
           onChanged: (value) {
             _changeTheme();
@@ -161,6 +166,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
           },
         ),
       ),
+    );
+  }
+
+  Widget _buildLogout() {
+    return InputButton(
+      onPressed: () {
+        getIt<InitialAppMixin>().logout();
+      },
+      buttonText: l10(context).logout,
     );
   }
 }

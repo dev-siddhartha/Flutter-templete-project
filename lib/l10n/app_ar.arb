@@ -1,6 +1,8 @@
 {
   "login": "تسجيل الدخول",
   "@login": {},
+  "logout": "تسجيل الخروج",
+  "@logout": {},
   "home": "المنزل",
   "@home": {},
   "history": "التاريخ",
@@ -11,6 +13,8 @@
   "@language": {},
   "theme": "سمة",
   "@theme": {},
+  "dark_mode": "الوضع المظلم",
+  "@dark_mode": {},
   "press_back_for_exit": "اضغط للخلف مرة أخرى للخروج",
   "@press_back_for_exit": {}
 }

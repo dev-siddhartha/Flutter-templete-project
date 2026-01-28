@@ -12,6 +12,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get login => 'تسجيل الدخول';
 
   @override
+  String get logout => 'تسجيل الخروج';
+
+  @override
   String get home => 'المنزل';
 
   @override
@@ -25,6 +28,9 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get theme => 'سمة';
+
+  @override
+  String get dark_mode => 'الوضع المظلم';
 
   @override
   String get press_back_for_exit => 'اضغط للخلف مرة أخرى للخروج';

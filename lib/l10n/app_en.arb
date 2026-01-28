@@ -1,6 +1,8 @@
 {
   "login": "Login",
   "@login": {},
+  "logout": "Logout",
+  "@logout": {},
   "home": "Home",
   "@home": {},
   "history": "History",
@@ -11,6 +13,8 @@
   "@language": {},
   "theme": "Theme",
   "@theme": {},
+  "dark_mode": "Dark Mode",
+  "@dark_mode": {},
   "press_back_for_exit": "Press back again to exit",
   "@press_back_for_exit": {}
 }
