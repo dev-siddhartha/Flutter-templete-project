@@ -1,4 +1,4 @@
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:flutter_template/core/constants/api_constants.dart';
 import 'package:flutter_template/core/constants/environment_config.dart';
 import 'package:flutter_template/core/model/device_info_model.dart';

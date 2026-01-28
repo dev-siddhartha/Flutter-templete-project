@@ -19,7 +19,7 @@ class AuthRepoImpl extends AuthRepo {
       data: {
         "username": username,
         "password": password,
-        "expiresInMin": 10,
+        "expiresInMin": 1,
       },
     );
   }

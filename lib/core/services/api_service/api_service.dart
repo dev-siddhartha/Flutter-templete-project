@@ -1,4 +1,4 @@
-import 'package:dartz/dartz.dart';
+import 'package:fpdart/fpdart.dart';
 import 'package:flutter_template/core/extensions/base_api_extension.dart';
 import 'package:flutter_template/core/model/failure_model.dart';
 import 'package:flutter_template/core/model/pagination_model.dart';
