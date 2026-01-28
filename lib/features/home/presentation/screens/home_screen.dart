@@ -16,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBarWidget(
         title: l10(context).home,
+        showBackButton: false,
       ),
       body: Center(
         child: TextWidget(l10(context).home),

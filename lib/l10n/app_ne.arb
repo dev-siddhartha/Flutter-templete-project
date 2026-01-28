@@ -1,6 +1,8 @@
 {
   "login": "लगइन",
   "@login": {},
+  "logout": "लगआउट",
+  "@logout": {},
   "home": "घर",
   "@home": {},
   "history": "इतिहास",
@@ -11,6 +13,8 @@
   "@language": {},
   "theme": "विषयवस्तु",
   "@theme": {},
+  "dark_mode": "गाढा मोड",
+  "@dark_mode": {},
   "press_back_for_exit": "निस्कन फेरि पछाडि थिच्नुहोस्",
   "@press_back_for_exit": {}
 }

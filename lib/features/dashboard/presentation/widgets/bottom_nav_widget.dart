@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter_template/core/utils/app_imports.dart';
-import 'package:flutter_template/features/dashboard/data/constants/dashboard_constants.dart';
+import 'package:flutter_template/core/utils/localization/localization_service.dart';
 
 class BottomNavWidget extends StatefulWidget {
   final int currentIndex;
@@ -45,7 +45,7 @@ class BottomNavWidgetState extends State<BottomNavWidget> {
             Expanded(
               flex: 3,
               child: _buildNavItem(
-                label: BottomNavString.home,
+                label: l10(context).home,
                 icon: Icons.home,
                 index: 0,
               ),
@@ -53,7 +53,7 @@ class BottomNavWidgetState extends State<BottomNavWidget> {
             Expanded(
               flex: 3,
               child: _buildNavItem(
-                label: BottomNavString.history,
+                label: l10(context).history,
                 icon: Icons.history,
                 index: 1,
               ),
@@ -61,7 +61,7 @@ class BottomNavWidgetState extends State<BottomNavWidget> {
             Expanded(
               flex: 3,
               child: _buildNavItem(
-                label: BottomNavString.profile,
+                label: l10(context).profile,
                 icon: Icons.person,
                 index: 2,
               ),

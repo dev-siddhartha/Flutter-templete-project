@@ -12,6 +12,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get login => 'Login';
 
   @override
+  String get logout => 'Logout';
+
+  @override
   String get home => 'Home';
 
   @override
@@ -25,6 +28,9 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get theme => 'Theme';
+
+  @override
+  String get dark_mode => 'Dark Mode';
 
   @override
   String get press_back_for_exit => 'Press back again to exit';

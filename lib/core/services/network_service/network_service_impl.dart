@@ -1,10 +1,10 @@
-import 'package:api_request_handler/api_service.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_template/core/constants/api_constants.dart';
 import 'package:flutter_template/core/constants/environment_config.dart';
 import 'package:flutter_template/core/model/device_info_model.dart';
 import 'package:flutter_template/core/model/failure_model.dart';
 import 'package:flutter_template/core/services/device_info/device_info_service.dart';
+import 'package:flutter_template/core/services/network_service/api_interceptor.dart';
 import 'package:flutter_template/core/services/network_service/network_service.dart';
 import 'package:flutter_template/core/type_defs.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
@@ -27,8 +27,7 @@ class NetworkServiceImpl extends NetworkService {
       baseUrl: EnvironmentConfig.baseUrl,
       globalHeaders: globalHeaders,
       interceptors: [
-        //! for this, need create custom api_interceptor
-        // TokenInterceptor(),
+        TokenInterceptor(),
       ],
     );
   }

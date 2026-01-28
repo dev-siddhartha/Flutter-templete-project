@@ -12,6 +12,9 @@ class AppLocalizationsNe extends AppLocalizations {
   String get login => 'लगइन';
 
   @override
+  String get logout => 'लगआउट';
+
+  @override
   String get home => 'घर';
 
   @override
@@ -25,6 +28,9 @@ class AppLocalizationsNe extends AppLocalizations {
 
   @override
   String get theme => 'विषयवस्तु';
+
+  @override
+  String get dark_mode => 'गाढा मोड';
 
   @override
   String get press_back_for_exit => 'निस्कन फेरि पछाडि थिच्नुहोस्';
