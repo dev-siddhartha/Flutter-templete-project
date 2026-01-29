@@ -1,4 +1,5 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- To remove AD_ID permission from any other SDK if used. This is required to publish app to Android 13+ devices -->
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>

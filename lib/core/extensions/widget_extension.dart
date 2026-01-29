@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:io' if (dart.library.html) '../utils/io_platform_stub.dart' as io;
 
 import 'package:flutter/services.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
@@ -8,7 +8,7 @@ extension WidgetExtension on Widget {
   InkWell onTap(GestureTapCallback callback, {bool haptics = false}) => InkWell(
         onTap: () {
           if (haptics) {
-            if (Platform.isIOS) {
+            if (io.Platform.isIOS) {
               HapticFeedback.heavyImpact();
             } else {
               HapticFeedback.vibrate();

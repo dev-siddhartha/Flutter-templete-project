@@ -1,4 +1,5 @@
-import 'dart:io';
+import 'dart:io' if (dart.library.html) '../../utils/io_platform_stub.dart'
+    as io;
 
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
@@ -43,7 +44,7 @@ class DeviceInfoService {
         appVersion: appVersion,
       );
       return deviceInfoModel;
-    } else if (Platform.isAndroid) {
+    } else if (io.Platform.isAndroid) {
       AndroidDeviceInfo androidInfo = await _deviceInfoPlugin.androidInfo;
       deviceInfoModel = DeviceInfoModel(
         deviceModel: androidInfo.model,

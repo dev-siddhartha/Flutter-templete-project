@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:io' if (dart.library.html) '../io_platform_stub.dart' as io;
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
@@ -30,7 +30,7 @@ class SecureStorageServiceImpl implements SecureStorageService {
       // 2. Then deleting the key
       // 3. Verifying deletion by reading back (should return null)
 
-      if (Platform.isIOS) {
+      if (io.Platform.isIOS) {
         // Step 1: Overwriting with empty string
         await _secureStorage.write(key: key, value: '');
 
@@ -99,7 +99,7 @@ class SecureStorageServiceImpl implements SecureStorageService {
 
   @override
   Future<void> forceClearToken({required String key}) async {
-    if (!Platform.isIOS) {
+    if (!io.Platform.isIOS) {
       // For Android, use standard deletion
       await deleteSecureData(key: key);
       return;

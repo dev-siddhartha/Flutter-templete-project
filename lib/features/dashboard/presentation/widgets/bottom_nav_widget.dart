@@ -1,4 +1,5 @@
-import 'dart:io';
+import 'dart:io'
+    if (dart.library.html) '../../../../core/utils/io_platform_stub.dart' as io;
 
 import 'package:flutter_template/core/utils/app_imports.dart';
 import 'package:flutter_template/core/utils/localization/localization_service.dart';
@@ -32,7 +33,7 @@ class BottomNavWidgetState extends State<BottomNavWidget> {
       ),
       child: BottomAppBar(
         elevation: 20.r,
-        height: Platform.isIOS ? 60.h : 70.h,
+        height: io.Platform.isIOS ? 60.h : 70.h,
         padding: EdgeInsets.symmetric(
           horizontal: 5.w,
         ),

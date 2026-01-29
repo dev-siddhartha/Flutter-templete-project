@@ -1,8 +1,9 @@
 import 'dart:async';
-import 'dart:io';
 
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
+import 'package:flutter_template/core/utils/connection_check/connection_check_io.dart'
+    if (dart.library.html) 'package:flutter_template/core/utils/connection_check/connection_check_web.dart'
+    as connection_check;
 
 enum ButtonSize { small, medium, large }
 
@@ -74,15 +75,7 @@ class _InputButtonState extends State<InputButton>
   final ValueNotifier<bool> _isEnabled = ValueNotifier<bool>(true);
 
   Future<bool> hasInternetConnection() async {
-    try {
-      var connection = await Connectivity().checkConnectivity();
-      var working = await InternetAddress.lookup('google.com')
-          .timeout(const Duration(seconds: 2));
-      return ((connection.any((e) => e != ConnectivityResult.none)) &&
-          working.isNotEmpty);
-    } on SocketException catch (_) {
-      return false;
-    }
+    return connection_check.hasInternetConnection();
   }
 
   @override
