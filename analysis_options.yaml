@@ -19,5 +19,8 @@ linter:
     avoid_setters_without_getters: true # Avoid setters without corresponding getters unless needed.
 
 analyzer:
+  errors:
+    library_private_types_in_public_api: ignore
+    depend_on_referenced_packages: ignore
   exclude: # Optional: Exclude certain files if needed
     - build/** # Excludes generated files
