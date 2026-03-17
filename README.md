@@ -90,3 +90,9 @@ Contributions are welcome! Please submit a pull request with your changes.
 ## License
 This project is open-source and available under the MIT License.
 
+
+# To format dart file
+
+``` bash
+dart format .
+```

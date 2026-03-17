@@ -22,5 +22,11 @@ analyzer:
   errors:
     library_private_types_in_public_api: ignore
     depend_on_referenced_packages: ignore
+    unused_import: error
+    unused_local_variable: error
+    dead_code: error
+    unused_element: error
+    unused_field: error
+
   exclude: # Optional: Exclude certain files if needed
     - build/** # Excludes generated files

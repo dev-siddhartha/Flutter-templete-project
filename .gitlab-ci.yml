@@ -1,0 +1,30 @@
+image: ghcr.io/cirruslabs/flutter:3.41.0
+
+stages:
+  - lint
+
+variables:
+  PUB_CACHE: "$CI_PROJECT_DIR/.pub-cache"
+  GIT_DEPTH: "1"
+
+cache:
+  key: "$CI_PROJECT_ID-flutter-packages"
+  paths:
+    - .pub-cache/
+    - .dart_tool/
+  policy: pull-push
+
+flutter_lint:
+  stage: lint
+  before_script:
+    - flutter --version
+    - touch .env.dev .env.prod    # create empty placeholder files
+    - flutter pub get
+  script:
+    # Check formatting — fails if any file needs reformatting
+    - dart format --output=none --set-exit-if-changed .
+
+    # Static analysis — fails on unused imports, unused code, dead code
+    - flutter analyze --fatal-warnings
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
