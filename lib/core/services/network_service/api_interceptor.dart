@@ -39,7 +39,7 @@ class TokenInterceptor extends Interceptor {
     getIt<InitialAppMixin>().logout();
     AppToast.showToast(
       "Session Timed Out",
-      position: ToastPosition.top,
+      gravity: ToastGravity.top,
     );
   }
 }

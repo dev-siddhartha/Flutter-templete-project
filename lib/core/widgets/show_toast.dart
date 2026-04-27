@@ -3,7 +3,9 @@ import 'dart:async';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
 
-enum ToastPosition { top, center, bottom }
+enum ToastGravity { top, center, bottom }
+
+enum ToastType { success, info, error }
 
 class AppToast {
   static _ToastEntry? _active;
@@ -11,7 +13,8 @@ class AppToast {
   static void showToast(
     String message, {
     int duration = 3,
-    ToastPosition position = ToastPosition.bottom,
+    ToastGravity gravity = ToastGravity.bottom,
+    ToastType toastType = ToastType.info,
   }) {
     final overlay = NavigationService.rootNavigatorKey.currentState?.overlay;
     if (overlay == null) return;
@@ -19,11 +22,11 @@ class AppToast {
     _active?.dismiss(animate: true);
 
     final entry = _ToastEntry(
-      message: message,
-      overlay: overlay,
-      duration: duration,
-      position: position,
-    );
+        message: message,
+        overlay: overlay,
+        duration: duration,
+        position: gravity,
+        toastType: toastType);
 
     _active = entry;
     entry.insert();
@@ -31,17 +34,18 @@ class AppToast {
 }
 
 class _ToastEntry extends TickerProvider {
-  _ToastEntry({
-    required this.message,
-    required this.overlay,
-    required this.duration,
-    required this.position,
-  });
+  _ToastEntry(
+      {required this.message,
+      required this.overlay,
+      required this.duration,
+      required this.position,
+      required this.toastType});
 
   final String message;
   final OverlayState overlay;
   final int duration;
-  final ToastPosition position;
+  final ToastGravity position;
+  final ToastType toastType;
 
   late final AnimationController _controller;
   late final Animation<Offset> _slide;
@@ -52,6 +56,31 @@ class _ToastEntry extends TickerProvider {
   bool _disposed = false;
 
   final Set<Ticker> _tickers = {};
+  List<Color> colors(ToastType toastType) {
+    switch (toastType) {
+      case ToastType.success:
+        return [
+          AppColors.primary[200],
+          AppColors.primary[200],
+          AppColors.grey[50],
+          AppColors.whiteColor,
+        ];
+      case ToastType.info:
+        return [
+          AppColors.info[200],
+          AppColors.info[200],
+          AppColors.grey[50],
+          AppColors.whiteColor,
+        ];
+      case ToastType.error:
+        return [
+          AppColors.error[200],
+          AppColors.error[200],
+          AppColors.grey[50],
+          AppColors.whiteColor,
+        ];
+    }
+  }
 
   @override
   Ticker createTicker(TickerCallback onTick) {
@@ -139,14 +168,14 @@ class _ToastEntry extends TickerProvider {
     );
 
     switch (position) {
-      case ToastPosition.top:
+      case ToastGravity.top:
         top = media.padding.top + 20.h;
         break;
 
-      case ToastPosition.center:
+      case ToastGravity.center:
         return Center(child: child);
 
-      case ToastPosition.bottom:
+      case ToastGravity.bottom:
         bottom = media.padding.bottom + 20.h;
         break;
     }
@@ -169,12 +198,7 @@ class _ToastEntry extends TickerProvider {
         gradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.topRight,
-          colors: [
-            AppColors.primary[200],
-            AppColors.primary[200],
-            AppColors.grey[50],
-            AppColors.whiteColor,
-          ],
+          colors: colors(toastType),
         ),
         borderRadius: BorderRadius.circular(16.r),
         boxShadow: [
