@@ -6,7 +6,6 @@ import 'package:flutter_template/core/utils/app_imports.dart';
 import 'package:flutter_template/core/services/localization/localization_service.dart';
 import 'package:flutter_template/core/widgets/app_bar_widget.dart';
 import 'package:flutter_template/core/widgets/buttons/input_button.dart';
-import 'package:flutter_template/core/widgets/show_toast.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -86,10 +85,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             _buildThemeSection(),
             _buildLanguageSection(),
-            const TextWidget("Testing").onTap(() => AppToast.showToast(
-                "Testing",
-                position: ToastPosition.top,
-                duration: 1)),
             const Spacer(),
             _buildLogout(),
           ],
