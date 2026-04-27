@@ -1,168 +1,206 @@
+import 'dart:async';
+
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
-import 'package:flutter_template/core/widgets/buttons/input_button.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
-enum ToastType { error, info, success, warning }
-//by default is info
+enum ToastPosition { top, center, bottom }
 
-Color getBackgroundColor(ToastType toastType) {
-  switch (toastType) {
-    case ToastType.success:
-      return AppColors.successColor;
+class AppToast {
+  static _ToastEntry? _active;
 
-    case ToastType.info:
-      return AppColors.infoColor;
+  static void showToast(
+    String message, {
+    int duration = 3,
+    ToastPosition position = ToastPosition.bottom,
+  }) {
+    final overlay = NavigationService.rootNavigatorKey.currentState?.overlay;
+    if (overlay == null) return;
 
-    case ToastType.error:
-      return AppColors.errorColor;
-    case ToastType.warning:
-      return AppColors.warningColor;
+    _active?.dismiss(animate: true);
+
+    final entry = _ToastEntry(
+      message: message,
+      overlay: overlay,
+      duration: duration,
+      position: position,
+    );
+
+    _active = entry;
+    entry.insert();
   }
 }
 
-Color getColor(ToastType toastType) {
-  switch (toastType) {
-    case ToastType.success:
-      return AppColors.successColor;
+class _ToastEntry extends TickerProvider {
+  _ToastEntry({
+    required this.message,
+    required this.overlay,
+    required this.duration,
+    required this.position,
+  });
 
-    case ToastType.info:
-      return getIt<NavigationService>().getNavigationContext().isDark
-          ? AppColors.whiteColor
-          : AppColors.blackColor;
+  final String message;
+  final OverlayState overlay;
+  final int duration;
+  final ToastPosition position;
 
-    case ToastType.error:
-    case ToastType.warning:
-      return AppColors.errorColor;
+  late final AnimationController _controller;
+  late final Animation<Offset> _slide;
+  late final Animation<double> _fade;
+  late final OverlayEntry _overlayEntry;
+
+  Timer? _dismissTimer;
+  bool _disposed = false;
+
+  final Set<Ticker> _tickers = {};
+
+  @override
+  Ticker createTicker(TickerCallback onTick) {
+    final ticker = Ticker(onTick);
+    _tickers.add(ticker);
+    return ticker;
   }
-}
 
-/// for border
-Color getBorderColor(ToastType toastType) {
-  switch (toastType) {
-    case ToastType.success:
-      return AppColors.successColor;
+  void insert() {
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+      reverseDuration: const Duration(milliseconds: 250),
+    );
 
-    case ToastType.info:
-      return AppColors.infoColor;
+    _slide = Tween<Offset>(
+      begin: const Offset(0, 1),
+      end: Offset.zero,
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeOutCubic,
+    ));
 
-    case ToastType.error:
-      return AppColors.errorColor;
-    case ToastType.warning:
-      return AppColors.warningColor;
+    _fade = Tween<double>(
+      begin: 0,
+      end: 1,
+    ).animate(CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeOut,
+    ));
+
+    _overlayEntry = OverlayEntry(builder: _build);
+    overlay.insert(_overlayEntry);
+
+    _controller.forward();
+
+    _dismissTimer = Timer(Duration(seconds: duration), () {
+      dismiss(animate: true);
+      if (AppToast._active == this) {
+        AppToast._active = null;
+      }
+    });
   }
-}
 
-Color getTextColor(ToastType toastType) {
-  switch (toastType) {
-    case ToastType.success:
-      return AppColors.whiteColor;
+  Future<void> dismiss({bool animate = true}) async {
+    if (_disposed) return;
 
-    case ToastType.info:
-      return AppColors.whiteColor;
+    _dismissTimer?.cancel();
+    _dismissTimer = null;
 
-    case ToastType.error:
-      return AppColors.whiteColor;
-    case ToastType.warning:
-      return AppColors.whiteColor;
+    if (animate && _controller.status != AnimationStatus.dismissed) {
+      await _controller.reverse();
+    }
+
+    _overlayEntry.remove();
+    _dispose();
   }
-}
 
-Widget getIconWidget(ToastType toastType) {
-  switch (toastType) {
-    case ToastType.success:
-      return Icon(Icons.check_circle, color: AppColors.whiteColor);
+  void _dispose() {
+    if (_disposed) return;
+    _disposed = true;
 
-    case ToastType.info:
-      return Icon(Icons.info, color: AppColors.whiteColor);
+    for (final t in _tickers) {
+      t.dispose();
+    }
 
-    case ToastType.error:
-      return Icon(Icons.error, color: AppColors.whiteColor);
-
-    case ToastType.warning:
-      return Icon(Icons.warning, color: AppColors.whiteColor);
+    _controller.dispose();
   }
-}
 
-void showToast(String? message,
-    {ToastType toastType = ToastType.info,
-    Duration animationDuration = const Duration(milliseconds: 300),
-    Duration toastDuration = const Duration(seconds: 3),
-    bool showButton = false,
-    String? btnTitle,
-    void Function()? onPress,
-    double? height,
-    double? fontSize,
-    ToastGravity gravity = ToastGravity.TOP}) {
-  FToast fToast = FToast();
-  fToast.init(getIt<NavigationService>().getNavigationContext());
-  fToast.removeCustomToast();
-  fToast.showToast(
-    gravity: gravity,
-    isDismissible: true,
-    // Remove Center widget and use proper sizing
-    child: Material(
-      color: Colors.transparent,
-      child: Container(
-        // Use intrinsic dimensions instead of fixed sizing
-        width: 1.sw, // Let it size itself
-        constraints: BoxConstraints(
-          maxWidth: 1.sw,
-          minHeight: 50.h, // Minimum height for touch targets
-          maxHeight: 120.h, // Maximum height to prevent overflow
-        ),
-        padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w),
-        decoration: BoxDecoration(
-          color: getBackgroundColor(toastType),
-          borderRadius: BorderRadius.circular(8.r),
-          border: Border.all(
-            color: getBorderColor(toastType),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black.withValues(alpha: 0.1),
-              blurRadius: 8,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
-        child: IntrinsicHeight(
-          // This ensures proper height sizing
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              getIconWidget(toastType),
-              8.horizontalSpace,
-              Expanded(
-                child: TextWidget(
-                  message ?? "",
-                  textType: TextType.custom,
-                  textOptions: TextOptions(
-                    fontSize: fontSize ?? 14.sp,
-                    fontWeight: FontWeight.w400,
-                  ),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 3,
-                  color: getTextColor(toastType),
-                ),
-              ),
-              if (showButton) ...[
-                8.horizontalSpace,
-                InputButton(
-                  borderColor: getColor(toastType),
-                  color: getColor(toastType),
-                  buttonText: btnTitle ?? "Button",
-                  buttonSize: ButtonSize.small,
-                  height: 30.h,
-                  onPressed: onPress,
-                ),
-              ]
-            ],
-          ),
+  Widget _build(BuildContext context) {
+    final media = MediaQuery.of(context);
+
+    double? top;
+    double? bottom;
+
+    Widget child = SlideTransition(
+      position: _slide,
+      child: FadeTransition(
+        opacity: _fade,
+        child: Material(
+          color: Colors.transparent,
+          child: _toastUI(context),
         ),
       ),
-    ),
-    toastDuration: toastDuration,
-  );
+    );
+
+    switch (position) {
+      case ToastPosition.top:
+        top = media.padding.top + 20.h;
+        break;
+
+      case ToastPosition.center:
+        return Center(child: child);
+
+      case ToastPosition.bottom:
+        bottom = media.padding.bottom + 20.h;
+        break;
+    }
+
+    return Positioned(
+      top: top,
+      bottom: bottom,
+      left: 12.w,
+      right: 12.w,
+      child: child,
+    );
+  }
+
+  Widget _toastUI(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      constraints: BoxConstraints(minHeight: 50.h, maxHeight: 120.h),
+      padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 14.w),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.topRight,
+          colors: [
+            AppColors.primary[200],
+            AppColors.primary[200],
+            AppColors.grey[50],
+            AppColors.whiteColor,
+          ],
+        ),
+        borderRadius: BorderRadius.circular(16.r),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.grey[900].withValues(alpha: 0.2),
+            blurRadius: 12.r,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Icon(Icons.info_outline_rounded,
+              color: Theme.of(context).primaryColor),
+          10.horizontalSpace,
+          Expanded(
+            child: TextWidget(
+              message,
+              textType: TextType.bodyLarge,
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+              color: AppColors.lightTextPrimary,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }

@@ -4,8 +4,7 @@ import 'package:flutter_template/core/cubits/theme_cubit/theme_cubit.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
 import 'package:flutter_template/core/utils/global_bloc_provider.dart';
 import 'package:flutter_template/core/utils/theme/global_theme.dart';
-import 'package:flutter_template/features/auth/presentation/bloc/auth_cubit/auth_cubit.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_template/features/auth/viewmodel/bloc/auth_cubit/auth_cubit.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key, required this.environment});
@@ -40,7 +39,6 @@ class MyApp extends StatelessWidget {
                           : GlobalTheme.darkThemeData,
                       duration: const Duration(milliseconds: 500),
                       child: MaterialApp.router(
-                        builder: FToastBuilder(),
                         debugShowCheckedModeBanner: false,
                         title: 'Siddhartha',
                         theme: GlobalTheme.lightThemeData,

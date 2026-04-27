@@ -3,8 +3,7 @@ import 'package:flutter_template/core/initial_app_mixin.dart';
 import 'package:flutter_template/core/services/network_service/network_service.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
 import 'package:flutter_template/core/widgets/show_toast.dart';
-import 'package:flutter_template/features/auth/data/service/auth_service.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_template/core/services/auth_service/auth_service.dart';
 
 class TokenInterceptor extends Interceptor {
   final AuthService _authService = AuthService();
@@ -38,10 +37,8 @@ class TokenInterceptor extends Interceptor {
 
   void _handleSessionTimeout() {
     getIt<InitialAppMixin>().logout();
-    showToast(
+    AppToast.showToast(
       "Session Timed Out",
-      toastType: ToastType.info,
-      gravity: ToastGravity.TOP,
     );
   }
 }

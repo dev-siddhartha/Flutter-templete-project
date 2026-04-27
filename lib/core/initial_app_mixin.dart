@@ -1,7 +1,7 @@
 import 'package:flutter_template/core/utils/app_imports.dart';
-import 'package:flutter_template/features/auth/data/service/auth_service.dart';
-import 'package:flutter_template/features/auth/presentation/bloc/auth_cubit/auth_cubit.dart';
-import 'package:flutter_template/features/profile/presentation/bloc/profile_bloc/profile_bloc.dart';
+import 'package:flutter_template/core/services/auth_service/auth_service.dart';
+import 'package:flutter_template/features/auth/viewmodel/bloc/auth_cubit/auth_cubit.dart';
+import 'package:flutter_template/features/profile/viewmodel/bloc/profile_bloc/profile_bloc.dart';
 
 @lazySingleton
 class InitialAppMixin {

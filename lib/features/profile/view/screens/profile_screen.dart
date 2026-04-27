@@ -1,0 +1,183 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_template/core/cubits/language_cubit/language_cubit.dart';
+import 'package:flutter_template/core/cubits/theme_cubit/theme_cubit.dart';
+import 'package:flutter_template/core/initial_app_mixin.dart';
+import 'package:flutter_template/core/utils/app_imports.dart';
+import 'package:flutter_template/core/services/localization/localization_service.dart';
+import 'package:flutter_template/core/widgets/app_bar_widget.dart';
+import 'package:flutter_template/core/widgets/buttons/input_button.dart';
+import 'package:flutter_template/core/widgets/show_toast.dart';
+
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  final ValueNotifier<AppLanguage> _selectedLanguage =
+      ValueNotifier(AppLanguage.english);
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedLanguage.value = lang();
+  }
+
+  @override
+  void dispose() {
+    _selectedLanguage.dispose();
+    super.dispose();
+  }
+
+  void _changeTheme() {
+    getIt<ThemeCubit>().changeTheme(
+      getIt<ThemeCubit>().state == ThemeMode.light ? 'Dark' : 'Light',
+    );
+  }
+
+  AppLanguage lang() {
+    final lang =
+        getIt<SharedPrefsService>().getString(key: SharedPrefsKeys.lang);
+    switch (lang) {
+      case 'en':
+        return AppLanguage.english;
+      case 'ne':
+        return AppLanguage.nepali;
+      case 'ar':
+        return AppLanguage.arabic;
+      default:
+        return AppLanguage.english;
+    }
+  }
+
+  void _changeLanguage(AppLanguage language) {
+    String langCode;
+    switch (language) {
+      case AppLanguage.english:
+        langCode = 'en';
+        break;
+      case AppLanguage.nepali:
+        langCode = 'ne';
+        break;
+      case AppLanguage.arabic:
+        langCode = 'ar';
+        break;
+    }
+
+    getIt<SharedPrefsService>()
+        .setString(key: SharedPrefsKeys.lang, value: langCode);
+    final locale = getIt<LocalizationService>().getLocale(language);
+    getIt<LanguageCubit>().changeLocale(locale);
+    _selectedLanguage.value = language;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBarWidget(
+        title: l10(context).profile,
+      ),
+      body: ScreenPadding(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            _buildThemeSection(),
+            _buildLanguageSection(),
+            const TextWidget("Testing").onTap(() => AppToast.showToast(
+                "Testing",
+                position: ToastPosition.top,
+                duration: 1)),
+            const Spacer(),
+            _buildLogout(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildThemeSection() {
+    return BlocBuilder<ThemeCubit, ThemeMode>(
+      builder: (context, state) {
+        return SwitchListTile(
+          title:
+              TextWidget(l10(context).dark_mode, textType: TextType.bodyLarge),
+          value: state == ThemeMode.dark,
+          onChanged: (value) {
+            _changeTheme();
+          },
+          inactiveTrackColor: AppColors.grey[300],
+          inactiveThumbColor: AppColors.grey[500],
+        );
+      },
+    );
+  }
+
+  Widget _buildLanguageSection() {
+    return ListTile(
+      title: TextWidget(
+        l10(context).language,
+        textType: TextType.bodyLarge,
+      ),
+      trailing: Container(
+        padding: EdgeInsets.symmetric(horizontal: 12.r, vertical: 6.r),
+        decoration: BoxDecoration(
+          color: context.isDark ? AppColors.whiteColor : AppColors.blackColor,
+          borderRadius: BorderRadius.circular(30.r),
+          border: Border.all(
+            color: AppColors.whiteColor.withValues(alpha: .1),
+          ),
+        ),
+        child: ValueListenableBuilder(
+          valueListenable: _selectedLanguage,
+          builder: (_, selectedLanguage, __) {
+            return DropdownButton<AppLanguage>(
+              value: selectedLanguage,
+              dropdownColor:
+                  context.isDark ? AppColors.whiteColor : AppColors.blackColor,
+              isDense: true,
+              underline: const SizedBox.shrink(),
+              icon: Icon(
+                Icons.keyboard_arrow_down,
+                color: context.isDark
+                    ? AppColors.blackColor
+                    : AppColors.whiteColor,
+              ),
+              onChanged: (value) {
+                if (value != null) {
+                  _changeLanguage(value);
+                  _selectedLanguage.value = value;
+                }
+              },
+              items: getIt<LocalizationService>()
+                  .supportedLanguages
+                  .map(
+                    (lang) => DropdownMenuItem<AppLanguage>(
+                      value: lang,
+                      child: TextWidget(
+                        lang.label,
+                        color: context.isDark
+                            ? AppColors.blackColor
+                            : AppColors.whiteColor,
+                      ),
+                    ),
+                  )
+                  .toList(),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLogout() {
+    return InputButton(
+      onPressed: () {
+        getIt<InitialAppMixin>().logout();
+      },
+      buttonText: l10(context).logout,
+    );
+  }
+}

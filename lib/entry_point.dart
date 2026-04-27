@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_template/core/services/network_service/network_service.dart';
-import 'package:flutter_template/features/auth/presentation/bloc/auth_cubit/auth_cubit.dart';
+import 'package:flutter_template/features/auth/viewmodel/bloc/auth_cubit/auth_cubit.dart';
 import 'package:flutter_template/injectable/injectable.dart';
 import 'package:flutter_template/main_screen.dart';
 import 'package:flutter_template/core/constants/environment_config.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
-import 'package:flutter_template/core/utils/localization/localization_service.dart';
+import 'package:flutter_template/core/services/localization/localization_service.dart';
 import 'package:flutter_template/core/widgets/show_toast.dart';
 
 class AppExitAlert extends StatefulWidget {
@@ -25,7 +25,7 @@ class _AppExitAlertState extends State<AppExitAlert> {
   DateTime? _lastBackPressTime;
 
   void _showExitToast() {
-    showToast(l10(context).press_back_for_exit, toastType: ToastType.info);
+   AppToast.showToast(l10(context).press_back_for_exit, );
   }
 
   void _exitApp() {

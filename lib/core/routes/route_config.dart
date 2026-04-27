@@ -1,10 +1,10 @@
 import 'package:flutter_template/core/utils/app_imports.dart';
-import 'package:flutter_template/features/auth/presentation/bloc/auth_cubit/auth_cubit.dart';
-import 'package:flutter_template/features/auth/presentation/screens/login_screen.dart';
-import 'package:flutter_template/features/dashboard/presentation/screens/dashboard_screen.dart';
-import 'package:flutter_template/features/home/presentation/screens/home_screen.dart';
-import 'package:flutter_template/features/history/presentation/screens/history_screen.dart';
-import 'package:flutter_template/features/profile/presentation/screens/profile_screen.dart';
+import 'package:flutter_template/features/auth/viewmodel/bloc/auth_cubit/auth_cubit.dart';
+import 'package:flutter_template/features/auth/view/screens/login_screen.dart';
+import 'package:flutter_template/features/dashboard/view/screens/dashboard_screen.dart';
+import 'package:flutter_template/features/home/view/screens/home_screen.dart';
+import 'package:flutter_template/features/history/view/screens/history_screen.dart';
+import 'package:flutter_template/features/profile/view/screens/profile_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class RouteConfig {
