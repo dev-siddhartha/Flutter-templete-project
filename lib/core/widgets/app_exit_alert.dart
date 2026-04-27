@@ -25,7 +25,9 @@ class _AppExitAlertState extends State<AppExitAlert> {
   DateTime? _lastBackPressTime;
 
   void _showExitToast() {
-    showToast(l10(context).press_back_for_exit, toastType: ToastType.info);
+    AppToast.showToast(
+      l10(context).press_back_for_exit,
+    );
   }
 
   void _exitApp() {

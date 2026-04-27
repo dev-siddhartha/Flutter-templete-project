@@ -4,7 +4,6 @@ import 'package:flutter_template/core/cubits/theme_cubit/theme_cubit.dart';
 import 'package:flutter_template/core/initial_app_mixin.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
 import 'package:flutter_template/core/utils/localization/localization_service.dart';
-import 'package:flutter_template/core/utils/localization/localization_support.dart';
 import 'package:flutter_template/core/widgets/app_bar_widget.dart';
 import 'package:flutter_template/core/widgets/buttons/input_button.dart';
 
@@ -16,7 +15,8 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final ValueNotifier<String> _selectedLanguage = ValueNotifier('English');
+  final ValueNotifier<AppLanguage> _selectedLanguage =
+      ValueNotifier(AppLanguage.english);
 
   @override
   void initState() {
@@ -36,40 +36,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  String lang() {
+  AppLanguage lang() {
     final lang =
         getIt<SharedPrefsService>().getString(key: SharedPrefsKeys.lang);
     switch (lang) {
       case 'en':
-        return 'English';
+        return AppLanguage.english;
       case 'ne':
-        return 'Nepali';
+        return AppLanguage.nepali;
       case 'ar':
-        return 'Arabic';
+        return AppLanguage.arabic;
       default:
-        return 'English';
+        return AppLanguage.english;
     }
   }
 
-  void _changeLanguage(String language) {
+  void _changeLanguage(AppLanguage language) {
     String langCode;
     switch (language) {
-      case 'English':
+      case AppLanguage.english:
         langCode = 'en';
         break;
-      case 'Nepali':
+      case AppLanguage.nepali:
         langCode = 'ne';
         break;
-      case 'Arabic':
+      case AppLanguage.arabic:
         langCode = 'ar';
         break;
-      default:
-        langCode = 'en';
     }
 
     getIt<SharedPrefsService>()
         .setString(key: SharedPrefsKeys.lang, value: langCode);
-    final locale = getIt<LocalizationSupport>().getLocale(language);
+    final locale = getIt<LocalizationService>().getLocale(language);
     getIt<LanguageCubit>().changeLocale(locale);
     _selectedLanguage.value = language;
   }
@@ -130,7 +128,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: ValueListenableBuilder(
           valueListenable: _selectedLanguage,
           builder: (_, selectedLanguage, __) {
-            return DropdownButton<String>(
+            return DropdownButton<AppLanguage>(
               value: selectedLanguage,
               dropdownColor:
                   context.isDark ? AppColors.whiteColor : AppColors.blackColor,
@@ -148,13 +146,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   _selectedLanguage.value = value;
                 }
               },
-              items: getIt<LocalizationSupport>()
-                  .langList
+              items: getIt<LocalizationService>()
+                  .supportedLanguages
                   .map(
-                    (lang) => DropdownMenuItem<String>(
+                    (lang) => DropdownMenuItem<AppLanguage>(
                       value: lang,
                       child: TextWidget(
-                        lang,
+                        lang.label,
                         color: context.isDark
                             ? AppColors.blackColor
                             : AppColors.whiteColor,

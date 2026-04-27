@@ -74,10 +74,10 @@ class LoginScreen extends StatelessWidget {
                   if (state.loginState is NormalSuccessState) {
                     getIt<AuthCubit>().login(state.loginState.data ?? false);
                   } else if (state.loginState is NormalFailureState) {
-                    showToast(
-                        state.loginState.failure?.message ??
-                            "Something went wrong",
-                        toastType: ToastType.error);
+                    AppToast.showToast(
+                      state.loginState.failure?.message ??
+                          "Something went wrong",
+                    );
                   }
                 },
                 builder: (context, state) {

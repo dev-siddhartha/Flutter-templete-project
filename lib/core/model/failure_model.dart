@@ -26,7 +26,7 @@ class Failure {
       message: message ?? this.message,
       data: errorData ?? data,
       status: status ?? this.status,
-      timestamp: timestamp ??  this.timestamp,
+      timestamp: timestamp ?? this.timestamp,
     );
   }
 

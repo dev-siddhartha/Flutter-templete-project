@@ -1,4 +1,3 @@
-
 class DeviceInfoModel {
   String deviceModel;
   String deviceOs;
