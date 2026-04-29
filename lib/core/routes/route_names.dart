@@ -7,4 +7,5 @@ class RouteNames {
   static const String homeScreenRoute = '/home-screen';
   static const String historyScreenRoute = '/history-screen';
   static const String profileScreenRoute = '/profile-screen';
+  static const String profileDetailScreenRoute = '/profile-detail-screen';
 }

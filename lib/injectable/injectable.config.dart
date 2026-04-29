@@ -21,6 +21,9 @@ import '../core/services/localization/localization_service.dart' as _i321;
 import '../core/services/navigation/navigation_service.dart' as _i648;
 import '../core/services/network_service/network_service.dart' as _i377;
 import '../core/services/network_service/network_service_impl.dart' as _i837;
+import '../core/storage/cache/file/file_cache_service.dart' as _i104;
+import '../core/storage/cache/hive/hive_cache_service.dart' as _i344;
+import '../core/storage/cache/hive/hive_initializer.dart' as _i631;
 import '../core/storage/secure_storage/secure_storage_module.dart' as _i478;
 import '../core/storage/secure_storage/secure_storage_service.dart' as _i21;
 import '../core/storage/secure_storage/secure_storage_service_impl.dart'
@@ -55,6 +58,8 @@ extension GetItInjectableX on _i174.GetIt {
       () => sharedPrefsModule.prefs,
       preResolve: true,
     );
+    gh.singleton<_i104.FileCacheService>(() => _i104.FileCacheService());
+    gh.singleton<_i344.HiveCacheService>(() => _i344.HiveCacheService());
     gh.lazySingleton<_i212.LanguageCubit>(() => _i212.LanguageCubit());
     gh.lazySingleton<_i138.ThemeCubit>(() => _i138.ThemeCubit());
     gh.lazySingleton<_i153.InitialAppMixin>(() => _i153.InitialAppMixin());
@@ -73,6 +78,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i332.SecureStorageServiceImpl(gh<_i558.FlutterSecureStorage>()));
     gh.lazySingleton<_i376.SharedPrefsService>(
         () => _i723.SharedPrefsServiceImpl(gh<_i460.SharedPreferences>()));
+    gh.singleton<_i631.HiveInitializer>(
+        () => _i631.HiveInitializer(gh<_i21.SecureStorageService>()));
     return this;
   }
 }

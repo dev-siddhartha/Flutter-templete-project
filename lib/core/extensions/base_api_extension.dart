@@ -11,6 +11,11 @@ T? successDataOnMap<T>({
     return null;
   }
 
+  /// if l is not null but also doesn have data key
+  if (!l.containsKey('data')) {
+    return fromJson(l as Map<String, dynamic>);
+  }
+
   final formatedData = l['data'];
 
   /// if data key is empty
@@ -48,3 +53,16 @@ List<T>? successDataOnList<T>({
     return null;
   }
 }
+
+// T extractData<T>({
+//   required Map<String, dynamic> raw,
+//   required T Function(Map<String, dynamic>) fromJson,
+// }) {
+//   final inner = raw['data'];
+
+//   if (inner == null || inner is! Map<String, dynamic>) {
+//     throw Exception("Invalid API structure");
+//   }
+
+//   return fromJson(inner);
+// }

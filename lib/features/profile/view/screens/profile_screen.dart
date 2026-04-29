@@ -85,6 +85,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             _buildThemeSection(),
             _buildLanguageSection(),
+            20.verticalSpace,
+            InputButton(
+                onPressed: () => getIt<NavigationService>()
+                    .navigateTo(RouteNames.profileDetailScreenRoute),
+                buttonText: 'Profile Detail'),
             const Spacer(),
             _buildLogout(),
           ],

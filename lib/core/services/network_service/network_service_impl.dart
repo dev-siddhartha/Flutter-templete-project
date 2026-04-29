@@ -1,3 +1,7 @@
+import 'package:flutter_template/core/storage/cache/file/file_cache_config.dart';
+import 'package:flutter_template/core/storage/cache/file/file_cache_service.dart';
+import 'package:flutter_template/core/storage/cache/hive/hive_cache_service.dart';
+import 'package:flutter_template/core/storage/cache/hive/hive_keys.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:flutter_template/core/constants/api_constants.dart';
 import 'package:flutter_template/core/constants/environment_config.dart';
@@ -85,6 +89,102 @@ class NetworkServiceImpl extends NetworkService {
       }
     } catch (e) {
       return Right(Failure(message: e.toString()));
+    }
+  }
+
+  /// handles cacheable requests, handles 4 cases:
+  /// - single file and response
+  /// - list of files and response
+  /// - single file and no response
+  /// - response and no file
+  @override
+  FutureDynamicFailure handleCacheableRequest({
+    required FutureDynamicFailure Function() apiCall,
+    required String cacheKey,
+    required HiveBoxes box,
+    Duration ttl = const Duration(hours: 24),
+    FileCacheConfig? fileConfig,
+  }) async {
+    final cache = getIt<HiveCacheService>();
+    final fileCache = getIt<FileCacheService>();
+
+    try {
+      final response = await apiCall();
+
+      return response.fold((l) async {
+        if (l == null) throw Exception("Null response");
+
+        final raw = Map<String, dynamic>.from(l);
+        final data = raw['data'];
+
+        if (data is! Map<String, dynamic>) {
+          throw Exception("Invalid structure");
+        }
+
+        /// file cache
+        // if (fileConfig != null) {
+        //   for (final field in fileConfig.fields) {
+        //     final url = data[field.key];
+
+        //     if (url != null && url is String) {
+        //       final path = await fileCache.cacheFile(url);
+        //       data[field.localKey] = path;
+        //     }
+        //   }
+        // }
+        if (fileConfig != null) {
+          final List<Map<String, String>> errors = [];
+
+          await Future.wait(
+            fileConfig.fields.map((field) async {
+              final url = data[field.key];
+
+              if (url is! String || url.isEmpty) {
+                errors.add({
+                  'field': field.key,
+                  'error': 'Invalid or empty URL',
+                });
+                data[field.localKey] = null;
+                return;
+              }
+
+              try {
+                final path = await fileCache.cacheFile(url);
+                data[field.localKey] = path;
+              } catch (e) {
+                data[field.localKey] = null;
+
+                errors.add({
+                  'field': field.key,
+                  'error': e.toString(),
+                });
+              }
+            }),
+          );
+
+          if (errors.isNotEmpty) {
+            data['_fileCacheErrors'] = errors;
+          }
+        }
+
+        await cache.save(
+          boxType: box,
+          key: cacheKey,
+          value: raw,
+          ttl: ttl,
+        );
+
+        return Left(raw);
+      }, (r) {
+        final cached = cache.get(boxType: box, key: cacheKey);
+        if (cached != null) return Left(cached);
+        return Right(r);
+      });
+    } catch (_) {
+      final cached = cache.get(boxType: box, key: cacheKey);
+      if (cached != null) return Left(cached);
+
+      return Right(Failure(message: "No cache available"));
     }
   }
 }

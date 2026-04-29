@@ -74,7 +74,8 @@ class ApiService {
           onSuccess?.call(newData as T);
           return NormalSuccessState(data: newData as T);
         } catch (e) {
-          final failure = Failure(message: "Something went wrong");
+          // final failure = Failure(message: "Something went wrong");
+          final failure = Failure(message: e.toString());
           onFailure?.call(failure);
           return NormalFailureState(failure: failure);
         }

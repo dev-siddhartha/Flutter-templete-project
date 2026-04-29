@@ -9,4 +9,7 @@ class SecureStorageKeys {
 
   /// ----[BIOMETRIC TOKEN]----
   static const String biometricToken = 'biometricToken';
+
+  /// ----[HIVE ENCRYPTION]----
+  static const String hiveKey = 'hiveKey';
 }
