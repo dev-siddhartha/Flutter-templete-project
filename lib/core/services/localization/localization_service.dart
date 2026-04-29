@@ -1,10 +1,6 @@
 import 'package:flutter_template/core/utils/app_imports.dart';
 
-enum AppLanguage {
-  english,
-  nepali,
-  arabic,
-}
+enum AppLanguage { english, sinhala, tamil }
 
 @lazySingleton
 class LocalizationService {
@@ -22,10 +18,10 @@ extension AppLanguageX on AppLanguage {
     switch (this) {
       case AppLanguage.english:
         return const Locale('en');
-      case AppLanguage.nepali:
-        return const Locale('ne');
-      case AppLanguage.arabic:
-        return const Locale('ar');
+      case AppLanguage.sinhala:
+        return const Locale('si');
+      case AppLanguage.tamil:
+        return const Locale('ta');
     }
   }
 
@@ -33,10 +29,10 @@ extension AppLanguageX on AppLanguage {
     switch (this) {
       case AppLanguage.english:
         return 'English';
-      case AppLanguage.nepali:
-        return 'Nepali';
-      case AppLanguage.arabic:
-        return 'Arabic';
+      case AppLanguage.sinhala:
+        return 'Sinhala';
+      case AppLanguage.tamil:
+        return 'Tamil';
     }
   }
 }

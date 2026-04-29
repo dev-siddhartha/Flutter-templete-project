@@ -11,6 +11,11 @@ T? successDataOnMap<T>({
     return null;
   }
 
+  /// if l is not null but also doesn have data key
+  if (!l.containsKey('data')) {
+    return fromJson(l as Map<String, dynamic>);
+  }
+
   final formatedData = l['data'];
 
   /// if data key is empty

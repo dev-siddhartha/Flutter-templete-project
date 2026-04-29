@@ -7,7 +7,7 @@ class DashboardConstants {
   final Map<String, Widget> screenMap = {
     BottomNavString.home: const HomeScreen(),
     BottomNavString.history: const HistoryScreen(),
-    BottomNavString.profile: const ProfileScreen(),
+    BottomNavString.profile: const SettingScreen(),
   };
 }
 

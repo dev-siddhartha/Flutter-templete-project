@@ -1,0 +1,21 @@
+{
+  "@@locale": "si",
+  "login": "පිවිසෙන්න",
+  "@login": {},
+  "logout": "ඉවත් වන්න",
+  "@logout": {},
+  "home": "මුල් පිටුව",
+  "@home": {},
+  "history": "ඉතිහාසය",
+  "@history": {},
+  "profile": "පැතිකඩ",
+  "@profile": {},
+  "language": "භාෂාව",
+  "@language": {},
+  "theme": "තේමාව",
+  "@theme": {},
+  "dark_mode": "අඳුරු මාදිලිය",
+  "@dark_mode": {},
+  "press_back_for_exit": "පිටවීමට නැවත පසු බොත්තම ඔබන්න",
+  "@press_back_for_exit": {}
+}

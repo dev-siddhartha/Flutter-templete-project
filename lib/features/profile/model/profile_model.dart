@@ -11,6 +11,7 @@ class ProfileModel {
   String? password;
   String? birthDate;
   String? image;
+  String? localImage;
   String? bloodGroup;
   double? height;
   double? weight;
@@ -71,6 +72,7 @@ class ProfileModel {
     password = json['password'];
     birthDate = json['birthDate'];
     image = json['image'];
+    localImage = json['local_image'];
     bloodGroup = json['bloodGroup'];
     height = json['height'];
     weight = json['weight'];
@@ -105,6 +107,7 @@ class ProfileModel {
     data['password'] = password;
     data['birthDate'] = birthDate;
     data['image'] = image;
+    data['local_image'] = localImage;
     data['bloodGroup'] = bloodGroup;
     data['height'] = height;
     data['weight'] = weight;

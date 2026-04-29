@@ -7,14 +7,14 @@ import 'package:flutter_template/core/services/localization/localization_service
 import 'package:flutter_template/core/widgets/app_bar_widget.dart';
 import 'package:flutter_template/core/widgets/buttons/input_button.dart';
 
-class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key});
+class SettingScreen extends StatefulWidget {
+  const SettingScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
+  State<SettingScreen> createState() => _SettingScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class _SettingScreenState extends State<SettingScreen> {
   final ValueNotifier<AppLanguage> _selectedLanguage =
       ValueNotifier(AppLanguage.english);
 
@@ -42,10 +42,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
     switch (lang) {
       case 'en':
         return AppLanguage.english;
-      case 'ne':
-        return AppLanguage.nepali;
-      case 'ar':
-        return AppLanguage.arabic;
+      case 'si':
+        return AppLanguage.sinhala;
+      case 'ta':
+        return AppLanguage.tamil;
       default:
         return AppLanguage.english;
     }
@@ -57,11 +57,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
       case AppLanguage.english:
         langCode = 'en';
         break;
-      case AppLanguage.nepali:
-        langCode = 'ne';
+      case AppLanguage.sinhala:
+        langCode = 'si';
         break;
-      case AppLanguage.arabic:
-        langCode = 'ar';
+      case AppLanguage.tamil:
+        langCode = 'ta';
         break;
     }
 
@@ -85,6 +85,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
           children: [
             _buildThemeSection(),
             _buildLanguageSection(),
+            20.verticalSpace,
+            const TextWidget('DetailScreen').onTap(()=> getIt<NavigationService>().navigateTo(RouteNames.profileDetailScreenRoute,
+             )),
             const Spacer(),
             _buildLogout(),
           ],

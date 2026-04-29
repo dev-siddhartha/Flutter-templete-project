@@ -1,0 +1,21 @@
+{
+  "@@locale": "ta",
+  "login": "உள்நுழை",
+  "@login": {},
+  "logout": "வெளியேறு",
+  "@logout": {},
+  "home": "முகப்பு",
+  "@home": {},
+  "history": "வரலாறு",
+  "@history": {},
+  "profile": "சுயவிவரம்",
+  "@profile": {},
+  "language": "மொழி",
+  "@language": {},
+  "theme": "தீம்",
+  "@theme": {},
+  "dark_mode": "இருண்ட நிலை",
+  "@dark_mode": {},
+  "press_back_for_exit": "வெளியேற மீண்டும் பின்செல் பொத்தானை அழுத்தவும்",
+  "@press_back_for_exit": {}
+}

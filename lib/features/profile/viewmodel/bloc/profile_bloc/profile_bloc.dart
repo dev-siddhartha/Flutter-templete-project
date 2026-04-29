@@ -23,7 +23,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
       final response = await ApiService.fetchNormalData(
           apiCall: () => getIt<AuthRepo>().getProfile(),
-          fromJson: ProfileModel.fromJson);
+          fromJson: ProfileModel.fromJson,
+          );
 
       emit(state.copyWith(detailState: response));
     } catch (e) {

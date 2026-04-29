@@ -54,6 +54,16 @@ dependencies:
   shared_preferences: ^2.5.5
   flutter_secure_storage: ^10.0.0
 
+  #for cache service [images/docs]
+  flutter_cache_manager: ^3.4.1
+
+  #image caching
+  cached_network_image: ^3.4.1
+  
+  #local db for cache service
+  sqflite: ^2.4.2+1
+
+
   # for state management
   flutter_bloc: ^9.1.1
   equatable: ^2.0.8

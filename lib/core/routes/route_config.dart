@@ -4,6 +4,7 @@ import 'package:flutter_template/features/auth/view/screens/login_screen.dart';
 import 'package:flutter_template/features/dashboard/view/screens/dashboard_screen.dart';
 import 'package:flutter_template/features/home/view/screens/home_screen.dart';
 import 'package:flutter_template/features/history/view/screens/history_screen.dart';
+import 'package:flutter_template/features/profile/view/screens/profile_detail_screen.dart';
 import 'package:flutter_template/features/profile/view/screens/profile_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -44,8 +45,12 @@ class RouteConfig {
       GoRoute(
         path: RouteNames.profileScreenRoute,
         name: RouteNames.profileScreenRoute,
-        builder: (context, state) => const ProfileScreen(),
+        builder: (context, state) => const SettingScreen(),
       ),
+      GoRoute(
+          path: RouteNames.profileDetailScreenRoute,
+          name: RouteNames.profileDetailScreenRoute,
+          builder: (context, state) => const ProfileDetailScreen()),
     ],
   );
 }
