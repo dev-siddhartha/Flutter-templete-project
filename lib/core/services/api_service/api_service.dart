@@ -6,6 +6,28 @@ import 'package:flutter_template/core/services/state/normal_state.dart';
 import 'package:flutter_template/core/services/state/pagination_state.dart';
 
 class ApiService {
+  /// Fetches paginated data from an API and merges it with existing state.
+  ///
+  /// Expected behavior:
+  /// - Executes [apiCall] which returns `Either`:
+  ///   - Left: successful response payload (Map-like structure)
+  ///   - Right: [Failure]
+  /// - Parses pagination data using `successDataOnMap`
+  /// - Merges new items with existing state if it is [PaginationSuccessState]
+  ///
+  /// Pagination rules:
+  /// - `pageNumber` is incremented by 1 after success
+  /// - If no previous state exists, starts fresh list
+  ///
+  /// Failure cases:
+  /// - Parsing errors return [PaginationFailureState]
+  /// - API failure returns [PaginationFailureState] directly
+  ///
+  /// WARNING:
+  /// - This silently swallows parsing errors and replaces them with generic failure
+  /// - This makes debugging production issues significantly harder
+  ///
+  /// Type [T] represents the model type parsed from JSON.
   static Future<PaginationState<T>> fetchPaginatedData<T>({
     required Future<Either<dynamic, Failure>> Function() apiCall,
     required T Function(Map<String, dynamic>) fromJson,
@@ -45,7 +67,28 @@ class ApiService {
     );
   }
 
-  // used for map data
+  /// Used for map,
+  /// Fetches a single object from an API and wraps it in [NormalState].
+  ///
+  /// Expected response:
+  /// - Nested JSON structure compatible with `successDataOnMap`
+  ///
+  /// Behavior:
+  /// - Calls [apiCall]
+  /// - Parses response into type [T]
+  /// - Invokes optional [onSuccess] or [onFailure] callbacks
+  ///
+  /// Edge cases:
+  /// - If parsed data is a List at runtime, it is incorrectly cast to List<T>
+  ///   (this indicates a type design flaw in the API or parser)
+  ///
+  /// Failure handling:
+  /// - Any parsing exception returns [NormalFailureState]
+  /// - API failure returns [NormalFailureState]
+  ///
+  /// WARNING:
+  /// - Contains unsafe casts: `(newData as T)`
+  /// - Can crash at runtime if backend shape changes
   static Future<NormalState<T>> fetchNormalData<T>({
     required Future<Either<dynamic, Failure>> Function() apiCall,
     required T Function(Map<String, dynamic>) fromJson,
@@ -87,7 +130,25 @@ class ApiService {
     );
   }
 
-  // used for listed data
+  /// Used for list of map,
+  /// Fetches a list of objects from an API and returns [NormalState<List<T>>].
+  ///
+  /// Expected response:
+  /// - JSON structure compatible with `successDataOnList`
+  ///
+  /// Behavior:
+  /// - Calls [apiCall]
+  /// - Parses list of maps into `List<T>`
+  /// - Returns empty list if parsing returns null
+  /// - Calls optional callbacks on success/failure
+  ///
+  /// Failure cases:
+  /// - Parsing exceptions return [NormalFailureState]
+  /// - API failure returns [NormalFailureState]
+  ///
+  /// Safety notes:
+  /// - Uses null-coalescing fallback (`?? []`) which hides API contract issues
+  /// - Errors are not propagated, only converted into generic failure state
   static Future<NormalState<List<T>>> fetchNormalListData<T>({
     required Future<Either<dynamic, Failure>> Function() apiCall,
     required T Function(Map<String, dynamic>) fromJson,

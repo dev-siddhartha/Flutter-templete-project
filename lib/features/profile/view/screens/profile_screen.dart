@@ -52,19 +52,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void _changeLanguage(AppLanguage language) {
-    String langCode;
-    switch (language) {
-      case AppLanguage.english:
-        langCode = 'en';
-        break;
-      case AppLanguage.nepali:
-        langCode = 'ne';
-        break;
-      case AppLanguage.arabic:
-        langCode = 'ar';
-        break;
-    }
-
+    final langCode = language.locale.languageCode;
     getIt<SharedPrefsService>()
         .setString(key: SharedPrefsKeys.lang, value: langCode);
     final locale = getIt<LocalizationService>().getLocale(language);

@@ -10,7 +10,7 @@ import 'package:go_router/go_router.dart';
 
 class RouteConfig {
   static final GoRouter router = GoRouter(
-    navigatorKey: NavigationService.rootNavigatorKey,
+    navigatorKey: getIt<NavigationService>().rootNavigatorKey,
     initialLocation: RouteNames.initialRoute,
     routes: [
       GoRoute(

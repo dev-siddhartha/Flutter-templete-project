@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter_template/core/storage/cache/hive/hive_keys.dart';
+import 'package:flutter_template/core/storage/hive_keys.dart';
 import 'package:flutter_template/core/storage/secure_storage/secure_storage_service.dart';
 import 'package:flutter_template/core/storage/secured_storage_keys.dart';
 import 'package:hive_flutter/hive_flutter.dart';

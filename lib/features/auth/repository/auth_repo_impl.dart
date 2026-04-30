@@ -3,7 +3,7 @@ import 'package:flutter_template/core/storage/cache/file/file_cache_config.dart'
 import 'package:flutter_template/core/type_defs.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
 
-import '../../../core/storage/cache/hive/hive_keys.dart';
+import '../../../core/storage/hive_keys.dart';
 import 'auth_repo.dart';
 
 @LazySingleton(as: AuthRepo)
@@ -38,7 +38,7 @@ class AuthRepoImpl extends AuthRepo {
       ttl: const Duration(minutes: 1),
       fileConfig: const FileCacheConfig(
         [
-          FileField(key: 'image', localKey: 'localImage'),
+          FileField(key: 'image', localKey: 'localImage',),
         ],
       ),
     );

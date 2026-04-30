@@ -1,86 +1,90 @@
 import 'package:flutter_template/core/utils/app_imports.dart';
+import 'package:flutter_template/core/utils/logger/app_logger.dart';
 import 'package:go_router/go_router.dart';
 
 @lazySingleton
 class NavigationService {
-  static GlobalKey<NavigatorState> rootNavigatorKey =
-      GlobalKey<NavigatorState>();
-  static BuildContext? get ctx =>
-      RouteConfig.router.routerDelegate.navigatorKey.currentState?.context ??
-      rootNavigatorKey.currentContext;
+  final GlobalKey<NavigatorState> rootNavigatorKey;
 
-  List<String> _routes = [];
-  List<String> get routes => List.unmodifiable(_routes);
+  NavigationService() : rootNavigatorKey = GlobalKey<NavigatorState>();
 
-  /// Do not call this method from directly.
-  /// It is handled by route observer
-  void addRoute(String routeName) {
-    _routes.add(routeName);
-  }
-
-  /// Do not call this method from directly.
-  /// It is handled by route observer
-  void removeRoute(String routeName) {
-    if (_routes.isNotEmpty && _routes.last == routeName) {
-      _routes.removeLast();
-    } else {
-      _routes.removeWhere((e) => e == routeName);
+  BuildContext get _context {
+    final ctx = rootNavigatorKey.currentContext;
+    if (ctx == null) {
+      throw Exception("Navigation not ready");
     }
+    return ctx;
   }
 
-  Future<dynamic> navigateTo(String routeName, {dynamic extra}) {
-    return ctx!.pushNamed(routeName, extra: extra);
+  /// for maintaining history
+  final List<String> _history = [];
+
+  /// for navigation audit trail
+  final List<String> _logs = [];
+
+  List<String> get history => List.unmodifiable(_history);
+  List<String> get logs => List.unmodifiable(_logs);
+
+  String? get currentRoute => _history.isNotEmpty ? _history.last : null;
+
+  void _log(String action, String route, {Object? extra}) {
+    final entry =
+        "[NAV] $action -> $route ${extra != null ? '| extra: $extra' : ''}";
+
+    _logs.add(entry);
+
+    // Print full current stack snapshot (what you asked for)
+    AppLogger.info(entry);
+    AppLogger.info("STACK: $_history");
+  }
+
+  Future<T?> navigateTo<T>(String routeName, {Object? extra}) {
+    _history.add(routeName);
+    _log("PUSH", routeName, extra: extra);
+
+    return _context.pushNamed<T>(routeName, extra: extra);
   }
 
   void pushAndRemoveUntil(String routeName, {Object? extra}) {
-    ctx?.goNamed(routeName, extra: extra);
+    _history
+      ..clear()
+      ..add(routeName);
+
+    _log("GO (RESET STACK)", routeName, extra: extra);
+
+    _context.goNamed(routeName, extra: extra);
   }
 
   void popUntil(String targetRoute) {
-    if (ctx == null) return;
+    if (!_history.contains(targetRoute)) return;
 
-    Navigator.of(ctx!).popUntil((route) {
-      final name = route.settings.name;
-      return name == targetRoute;
-    });
-
-    // Rebuild the routes list after popping
-    final index = _routes.indexOf(targetRoute);
-    if (index != -1) {
-      _routes = _routes.sublist(0, index + 1);
+    while (_history.isNotEmpty && _history.last != targetRoute) {
+      final removed = _history.removeLast();
+      _log("POP_UNTIL_REMOVE", removed);
+      _context.pop();
     }
+
+    _log("POP_UNTIL_END", targetRoute);
   }
 
-  void goBack([Object? data]) {
-    ctx?.pop(data);
+  void goBack<T extends Object?>([T? result]) {
+    final removed = _history.isNotEmpty ? _history.removeLast() : null;
+
+    _log("POP", removed ?? "null");
+
+    _context.pop(result);
   }
 
   void pushReplacement(String routeName, {Object? extra}) {
-    ctx?.pushReplacementNamed(routeName, extra: extra);
-  }
-
-  BuildContext getNavigationContext() {
-    if (rootNavigatorKey.currentState == null) {
-      throw Exception("Navigation is not initialized");
+    if (_history.isNotEmpty) {
+      _history.removeLast();
     }
-    return ctx!;
-  }
-}
+    _history.add(routeName);
 
-class MyNavigatorObserver extends NavigatorObserver {
-  @override
-  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    super.didPush(route, previousRoute);
-    getIt<NavigationService>().addRoute(
-      route.settings.name ?? "",
-    );
+    _log("REPLACE", routeName, extra: extra);
+
+    _context.pushReplacementNamed(routeName, extra: extra);
   }
 
-  @override
-  void didPop(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    super.didPop(route, previousRoute);
-    getIt<NavigationService>().removeRoute(
-      route.settings.name ?? "",
-    );
-  }
+  bool canPop() => _context.canPop();
 }

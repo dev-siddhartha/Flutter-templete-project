@@ -1,4 +1,4 @@
-import 'package:flutter_template/core/storage/cache/hive/hive_keys.dart';
+import 'package:flutter_template/core/storage/hive_keys.dart';
 import 'package:flutter_template/core/utils/app_imports.dart';
 import 'package:hive/hive.dart';
 

@@ -16,7 +16,7 @@ class AppToast {
     ToastGravity gravity = ToastGravity.bottom,
     ToastType toastType = ToastType.info,
   }) {
-    final overlay = NavigationService.rootNavigatorKey.currentState?.overlay;
+    final overlay = getIt<NavigationService>().rootNavigatorKey.currentState?.overlay;
     if (overlay == null) return;
 
     _active?.dismiss(animate: true);
