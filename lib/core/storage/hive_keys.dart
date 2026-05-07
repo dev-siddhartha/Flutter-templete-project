@@ -12,3 +12,4 @@ class HiveKeys {
 
   static String profile = 'user:profile';
 }
+ 
