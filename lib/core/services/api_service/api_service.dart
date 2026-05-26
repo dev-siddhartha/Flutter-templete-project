@@ -79,7 +79,7 @@ class ApiService {
   /// - Invokes optional [onSuccess] or [onFailure] callbacks
   ///
   /// Edge cases:
-  /// - If parsed data is a List at runtime, it is incorrectly cast to List<T>
+  /// - If parsed data is a List at runtime, it is incorrectly cast to List
   ///   (this indicates a type design flaw in the API or parser)
   ///
   /// Failure handling:
