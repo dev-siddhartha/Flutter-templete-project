@@ -38,16 +38,12 @@ import '../features/profile/presentation/bloc/profile_bloc/profile_bloc.dart'
     as _i848;
 
 extension GetItInjectableX on _i174.GetIt {
-// initializes the registration of main-scope dependencies inside of GetIt
+  // initializes the registration of main-scope dependencies inside of GetIt
   Future<_i174.GetIt> init({
     String? environment,
     _i526.EnvironmentFilter? environmentFilter,
   }) async {
-    final gh = _i526.GetItHelper(
-      this,
-      environment,
-      environmentFilter,
-    );
+    final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final sharedPrefsModule = _$SharedPrefsModule();
     final secureStorageModule = _$SecureStorageModule();
     await gh.factoryAsync<_i460.SharedPreferences>(
@@ -58,10 +54,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i138.ThemeCubit>(() => _i138.ThemeCubit());
     gh.lazySingleton<_i153.InitialAppMixin>(() => _i153.InitialAppMixin());
     gh.lazySingleton<_i743.LocalizationService>(
-        () => _i743.LocalizationService());
+      () => _i743.LocalizationService(),
+    );
     gh.lazySingleton<_i937.NavigationService>(() => _i937.NavigationService());
     gh.lazySingleton<_i558.FlutterSecureStorage>(
-        () => secureStorageModule.secureprefs);
+      () => secureStorageModule.secureprefs,
+    );
     gh.lazySingleton<_i435.AuthCubit>(() => _i435.AuthCubit());
     gh.lazySingleton<_i551.LoginBloc>(() => _i551.LoginBloc());
     gh.lazySingleton<_i296.BottomNavCubit>(() => _i296.BottomNavCubit());
@@ -69,9 +67,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i377.NetworkService>(() => _i837.NetworkServiceImpl());
     gh.lazySingleton<_i113.AuthRepo>(() => _i855.AuthRepoImpl());
     gh.lazySingleton<_i769.SharedPrefsService>(
-        () => _i774.SharedPrefsServiceImpl(gh<_i460.SharedPreferences>()));
+      () => _i774.SharedPrefsServiceImpl(gh<_i460.SharedPreferences>()),
+    );
     gh.lazySingleton<_i226.SecureStorageService>(
-        () => _i81.SecureStorageServiceImpl(gh<_i558.FlutterSecureStorage>()));
+      () => _i81.SecureStorageServiceImpl(gh<_i558.FlutterSecureStorage>()),
+    );
     return this;
   }
 }

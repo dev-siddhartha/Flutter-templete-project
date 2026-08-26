@@ -11,7 +11,9 @@ dependencies {
 
 android {
     namespace = "com.siddhartha.templete"
-    compileSdk = flutter.compileSdkVersion
+    // permission_handler_android 14 (permission_handler ^13.0.1) requires compileSdk 37,
+    // ahead of Flutter 3.44's own default of 36.
+    compileSdk = 37
     ndkVersion = flutter.ndkVersion
 
     compileOptions {
