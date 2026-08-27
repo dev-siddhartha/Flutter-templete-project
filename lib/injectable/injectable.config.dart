@@ -17,8 +17,13 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 import '../core/cubits/language_cubit/language_cubit.dart' as _i212;
 import '../core/cubits/theme_cubit/theme_cubit.dart' as _i138;
 import '../core/initial_app_mixin.dart' as _i153;
+import '../core/services/biometric/biometric_service.dart' as _i677;
+import '../core/services/biometric/biometric_service_impl.dart' as _i378;
+import '../core/services/firebase/firebase_service.dart' as _i935;
+import '../core/services/firebase/firebase_service_impl.dart' as _i954;
 import '../core/services/network_service/network_service.dart' as _i377;
 import '../core/services/network_service/network_service_impl.dart' as _i837;
+import '../core/storage/cache/hive/hive_initializer.dart' as _i631;
 import '../core/utils/localization/localization_service.dart' as _i743;
 import '../core/utils/navigation_service.dart' as _i937;
 import '../core/utils/secure_storage/secure_storage_module.dart' as _i482;
@@ -65,12 +70,21 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i296.BottomNavCubit>(() => _i296.BottomNavCubit());
     gh.lazySingleton<_i848.ProfileBloc>(() => _i848.ProfileBloc());
     gh.lazySingleton<_i377.NetworkService>(() => _i837.NetworkServiceImpl());
+    gh.lazySingleton<_i677.BiometricService>(
+      () => _i378.BiometricServiceImpl(),
+    );
     gh.lazySingleton<_i113.AuthRepo>(() => _i855.AuthRepoImpl());
+    gh.lazySingleton<_i935.AbsFirebaseService>(
+      () => _i954.FirebaseServiceImpl(),
+    );
     gh.lazySingleton<_i769.SharedPrefsService>(
       () => _i774.SharedPrefsServiceImpl(gh<_i460.SharedPreferences>()),
     );
     gh.lazySingleton<_i226.SecureStorageService>(
       () => _i81.SecureStorageServiceImpl(gh<_i558.FlutterSecureStorage>()),
+    );
+    gh.singleton<_i631.HiveInitializer>(
+      () => _i631.HiveInitializer(gh<_i226.SecureStorageService>()),
     );
     return this;
   }

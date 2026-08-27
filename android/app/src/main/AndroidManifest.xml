@@ -4,10 +4,13 @@
     <!-- To remove AD_ID permission from any other SDK if used. This is required to publish app to Android 13+ devices -->
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
 
+    <!-- required so the local notification plugin can know when the device is rebooted. This is required so that the plugin can reschedule notifications upon a reboot -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
     <application
         android:label="@string/app_name"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -28,6 +31,11 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="FLUTTER_NOTIFICATION_CLICK"/>
+                <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.

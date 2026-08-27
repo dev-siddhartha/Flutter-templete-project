@@ -23,33 +23,39 @@ class MyApp extends StatelessWidget {
             builder: (context, theme) {
               return BlocBuilder<LanguageCubit, Locale>(
                 builder: (context, language) {
-                  return BlocListener<AuthCubit, bool>(
-                    listener: (context, auth) {
-                      if (auth) {
-                        getIt<NavigationService>()
-                            .pushAndRemoveUntil(RouteNames.dashboardRoute);
-                      } else {
-                        getIt<NavigationService>()
-                            .pushAndRemoveUntil(RouteNames.loginRoute);
-                      }
-                    },
-                    child: AnimatedTheme(
-                      data: theme == ThemeMode.light
-                          ? GlobalTheme.lightThemeData
-                          : GlobalTheme.darkThemeData,
-                      duration: const Duration(milliseconds: 500),
-                      child: MaterialApp.router(
-                        debugShowCheckedModeBanner: false,
-                        title: 'Siddhartha',
-                        theme: GlobalTheme.lightThemeData,
-                        darkTheme: GlobalTheme.darkThemeData,
-                        routerConfig: RouteConfig.router,
-                        themeMode: theme,
-                        localizationsDelegates:
-                            AppLocalizations.localizationsDelegates,
-                        supportedLocales: AppLocalizations.supportedLocales,
-                        locale: language,
-                        // home: MyHomePage(title: environment),
+                  return SldsTheme(
+                    data: theme == ThemeMode.dark
+                        ? AppTokenSet.dark()
+                        : AppTokenSet.light(),
+                    child: BlocListener<AuthCubit, bool>(
+                      listener: (context, auth) {
+                        if (auth) {
+                          getIt<NavigationService>().pushAndRemoveUntil(
+                            RouteNames.dashboardRoute,
+                          );
+                        } else {
+                          getIt<NavigationService>().pushAndRemoveUntil(
+                            RouteNames.loginRoute,
+                          );
+                        }
+                      },
+                      child: AnimatedTheme(
+                        data: theme == ThemeMode.light
+                            ? GlobalTheme.lightThemeData
+                            : GlobalTheme.darkThemeData,
+                        duration: const Duration(milliseconds: 500),
+                        child: MaterialApp.router(
+                          debugShowCheckedModeBanner: false,
+                          title: 'Siddhartha',
+                          theme: GlobalTheme.lightThemeData,
+                          darkTheme: GlobalTheme.darkThemeData,
+                          routerConfig: RouteConfig.router,
+                          themeMode: theme,
+                          localizationsDelegates:
+                              AppLocalizations.localizationsDelegates,
+                          supportedLocales: AppLocalizations.supportedLocales,
+                          locale: language,
+                        ),
                       ),
                     ),
                   );

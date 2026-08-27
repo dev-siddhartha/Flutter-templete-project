@@ -17,7 +17,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
         title: l10(context).history,
       ),
       body: Center(
-        child: TextWidget(l10(context).history),
+        child: SldsText(l10(context).history),
       ),
     );
   }

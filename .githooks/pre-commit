@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Mirrors .gitlab-ci.yml's lint stage locally, before you push.
+# Enable once per clone with: git config core.hooksPath .githooks
+set -e
+
+echo "Running dart format..."
+dart format --output=none --set-exit-if-changed .
+
+echo "Running flutter analyze..."
+flutter analyze --fatal-warnings
+
+echo "Pre-commit checks passed."

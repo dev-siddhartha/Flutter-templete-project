@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_template/core/services/firebase/firebase_service.dart';
 import 'package:flutter_template/core/services/network_service/network_service.dart';
+import 'package:flutter_template/core/storage/cache/hive/hive_initializer.dart';
 import 'package:flutter_template/features/auth/presentation/bloc/auth_cubit/auth_cubit.dart';
 import 'package:flutter_template/injectable/injectable.dart';
 import 'package:flutter_template/main_screen.dart';
@@ -28,7 +30,11 @@ class EntryPoint {
     // init getit (di)
     await configureDependencies();
 
+    // must run before NetworkService - see HiveInitializer for why
+    await getIt<HiveInitializer>().init();
+
     await getIt<NetworkService>().initilizeNetworkService();
+    await getIt<AbsFirebaseService>().initializeFirebase();
 
     getIt<AuthCubit>().checkLogin();
 

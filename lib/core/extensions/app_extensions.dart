@@ -42,6 +42,36 @@ extension PrimaryColor on BuildContext {
   }
 }
 
+/// Entry point for SLDS palette-swatch access via `context.colors.*`.
+///
+/// Semantic (theme-aware) colors come from `context.slds.colors.*` instead —
+/// this accessor is palette-only.
+///
+/// Usage:
+/// ```dart
+/// context.colors.primary[500]
+/// context.colors.grey[100]
+/// context.colors.error[600]
+/// ```
+extension SldsColorsEntryPoint on BuildContext {
+  SldsColors get colors => SldsColors(SldsTheme.of(this));
+}
+
+/// Provides access to SLDS raw palette swatches only.
+class SldsColors {
+  const SldsColors(this._tokens);
+
+  final SldsTokenSet _tokens;
+
+  SldsColorSwatch get primary => _tokens.primary;
+  SldsColorSwatch get secondary => _tokens.secondary;
+  SldsColorSwatch get success => _tokens.success;
+  SldsColorSwatch get error => _tokens.error;
+  SldsColorSwatch get grey => _tokens.grey;
+  SldsColorSwatch get warning => _tokens.warning;
+  SldsColorSwatch get info => _tokens.info;
+}
+
 extension StringCasingExtension on String {
   String toCapitalized() =>
       length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';

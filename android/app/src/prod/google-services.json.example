@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "REPLACE_WITH_YOUR_PROD_PROJECT_NUMBER",
+    "project_id": "REPLACE_WITH_YOUR_PROD_FIREBASE_PROJECT_ID",
+    "storage_bucket": "REPLACE_WITH_YOUR_PROD_FIREBASE_PROJECT_ID.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "REPLACE_WITH_YOUR_PROD_MOBILESDK_APP_ID",
+        "android_client_info": {
+          "package_name": "com.siddhartha.templete"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "REPLACE_WITH_YOUR_PROD_ANDROID_API_KEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

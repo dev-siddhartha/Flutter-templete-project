@@ -97,8 +97,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return BlocBuilder<ThemeCubit, ThemeMode>(
       builder: (context, state) {
         return SwitchListTile(
-          title:
-              TextWidget(l10(context).dark_mode, textType: TextType.bodyLarge),
+          title: SldsText(
+            l10(context).dark_mode,
+            variant: SldsTextVariant.body1,
+            fontWeight: FontWeight.w500,
+          ),
           value: state == ThemeMode.dark,
           onChanged: (value) {
             _changeTheme();
@@ -112,9 +115,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Widget _buildLanguageSection() {
     return ListTile(
-      title: TextWidget(
+      title: SldsText(
         l10(context).language,
-        textType: TextType.bodyLarge,
+        variant: SldsTextVariant.body1,
+        fontWeight: FontWeight.w500,
       ),
       trailing: Container(
         padding: EdgeInsets.symmetric(horizontal: 12.r, vertical: 6.r),
@@ -151,7 +155,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   .map(
                     (lang) => DropdownMenuItem<AppLanguage>(
                       value: lang,
-                      child: TextWidget(
+                      child: SldsText(
                         lang.label,
                         color: context.isDark
                             ? AppColors.blackColor

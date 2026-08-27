@@ -1,7 +1,8 @@
-image: ghcr.io/cirruslabs/flutter:3.41.0
+image: ghcr.io/cirruslabs/flutter:3.44.0
 
 stages:
   - lint
+  - test
 
 variables:
   PUB_CACHE: "$CI_PROJECT_DIR/.pub-cache"
@@ -22,9 +23,26 @@ flutter_lint:
     - flutter pub get
   script:
     # Check formatting — fails if any file needs reformatting
-    - dart format --output=none --set-exit-if-changed .
+    - dart format --output=none --set-exit-if-changed lib/ test/
 
     # Static analysis — fails on unused imports, unused code, dead code
     - flutter analyze --fatal-warnings
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+flutter_test:
+  stage: test
+  before_script:
+    - flutter --version
+    - touch .env.dev .env.prod    # create empty placeholder files
+    - flutter pub get
+  script:
+    # Unit + widget tests (see docs/testing.md). Not integration_test/ - that
+    # needs a real device/emulator, which this runner doesn't have.
+    - flutter test --coverage
+  coverage: '/lines\.*:\s*\d+\.\d+\%/'
+  artifacts:
+    paths:
+      - coverage/lcov.info
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'

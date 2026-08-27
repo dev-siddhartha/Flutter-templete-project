@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_template/core/utils/localization/localization_service.dart';
 import 'package:flutter_template/core/widgets/app_bar_widget.dart';
-import 'package:flutter_template/core/widgets/text_widget.dart';
+import 'package:slds_flutter/slds_flutter.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
         showBackButton: false,
       ),
       body: Center(
-        child: TextWidget(l10(context).home),
+        child: SldsText(l10(context).home),
       ),
     );
   }
