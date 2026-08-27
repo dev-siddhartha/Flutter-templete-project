@@ -93,11 +93,9 @@ class BottomNavWidgetState extends State<BottomNavWidget> {
                     ? AppColors.grey[300]
                     : AppColors.grey[800],
           ),
-          TextWidget(
+          SldsText(
             label,
-            textType: TextType.custom,
-            textOptions:
-                TextOptions(fontWeight: isSelected ? FontWeight.w600 : null),
+            fontWeight: isSelected ? FontWeight.w600 : null,
             color: isSelected
                 ? AppColors.primaryColor
                 : context.isDark

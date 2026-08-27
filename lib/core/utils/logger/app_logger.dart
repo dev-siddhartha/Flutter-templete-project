@@ -36,9 +36,6 @@ class AppLogger {
         stackTrace: stackTrace,
       );
     }
-    if (kReleaseMode && error != null) {
-      /// send data to crashlytics
-    }
   }
 
   /// Logs an error message.
@@ -56,14 +53,6 @@ class AppLogger {
         error: error,
         stackTrace: stackTrace,
       );
-    }
-
-    if (kReleaseMode) {
-      if (error != null && stackTrace != null) {
-        // do something
-      } else {
-        // do someething
-      }
     }
   }
 
@@ -88,23 +77,7 @@ class AppLogger {
       );
 
       if (additionalData != null) {
-        developer.log(
-          'Additional data: $additionalData',
-          name: 'AppLogger',
-        );
-      }
-    }
-
-    if (kReleaseMode) {
-      if (error != null && stackTrace != null) {
-        // FirebaseCrashlytics.instance.recordError(
-        //   error,
-        //   stackTrace,
-        //   fatal: fatal,
-        //   reason: fullMessage,
-        // );
-      } else {
-        // FirebaseCrashlytics.instance.log('Error: $fullMessage');
+        developer.log('Additional data: $additionalData', name: 'AppLogger');
       }
     }
   }

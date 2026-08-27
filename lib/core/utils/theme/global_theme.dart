@@ -24,6 +24,7 @@ class GlobalTheme {
 
   static ThemeData themeData(ColorScheme colorScheme, Color focusColor) {
     return ThemeData(
+      fontFamily: 'Google Sans',
       colorScheme: colorScheme,
       canvasColor: colorScheme.surface,
       scaffoldBackgroundColor: colorScheme.surface,

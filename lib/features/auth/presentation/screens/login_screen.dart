@@ -36,17 +36,15 @@ class LoginScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              TextWidget(
+              SldsText(
                 l10(context).login,
-                textType: TextType.heading,
+                variant: SldsTextVariant.heading2,
               ),
               50.verticalSpace,
-              TextFormField(
+              SldsInput(
                 controller: usernameController,
-                decoration: const InputDecoration(
-                  labelText: "Username",
-                  hintText: "Enter your username",
-                ),
+                label: "Username",
+                placeholder: "Enter your username",
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Username is required";
@@ -55,12 +53,10 @@ class LoginScreen extends StatelessWidget {
                 },
               ),
               20.verticalSpace,
-              TextFormField(
+              SldsInput(
                 controller: passwordController,
-                decoration: const InputDecoration(
-                  labelText: "Password",
-                  hintText: "Enter your password",
-                ),
+                label: "Password",
+                placeholder: "Enter your password",
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return "Password is required";

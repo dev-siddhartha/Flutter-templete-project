@@ -215,9 +215,10 @@ class _ToastEntry extends TickerProvider {
               color: Theme.of(context).primaryColor),
           10.horizontalSpace,
           Expanded(
-            child: TextWidget(
+            child: SldsText(
               message,
-              textType: TextType.bodyLarge,
+              variant: SldsTextVariant.body1,
+              fontWeight: FontWeight.w500,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               color: AppColors.lightTextPrimary,

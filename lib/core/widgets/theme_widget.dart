@@ -45,9 +45,9 @@ class _ThemeWidgetState extends State<ThemeWidget> {
               spacing: 15.h,
               children: [
                 20.verticalSpace,
-                const TextWidget(
+                const SldsText(
                   "Select Theme",
-                  textType: TextType.title,
+                  variant: SldsTextVariant.title1,
                 ),
                 10.verticalSpace,
                 ValueListenableBuilder(
@@ -62,7 +62,7 @@ class _ThemeWidgetState extends State<ThemeWidget> {
                         return ScreenPadding(
                           child: ListTile(
                             contentPadding: EdgeInsets.zero,
-                            title: TextWidget(theme),
+                            title: SldsText(theme),
                             onTap: () {
                               _changeTheme(theme);
                               selectedtheme.value = theme;
@@ -89,21 +89,21 @@ class _ThemeWidgetState extends State<ThemeWidget> {
         spacing: 15.h,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const TextWidget(
+          const SldsText(
             "Theme",
-            textType: TextType.title,
+            variant: SldsTextVariant.title1,
           ),
           Row(
             children: [
               10.horizontalSpace,
-              const TextWidget(
+              const SldsText(
                 "Select Theme",
               ),
               const Spacer(),
               ValueListenableBuilder(
                 valueListenable: selectedtheme,
                 builder: (context, value, child) {
-                  return TextWidget(value);
+                  return SldsText(value);
                 },
               ),
               8.horizontalSpace,

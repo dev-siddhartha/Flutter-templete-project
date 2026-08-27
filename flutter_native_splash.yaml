@@ -1,0 +1,27 @@
+# Native splash screen generation config for the flutter_native_splash package.
+#
+# `assets/icon/icon.png` is currently a placeholder (copied from the default Flutter
+# mipmap icon) - replace it with your project's real splash image, and set `color`/
+# `color_dark` to your brand background before shipping.
+#
+# To regenerate the native splash screens (Android/iOS/web) after changing the source
+# image or this config, run:
+#   dart run flutter_native_splash:create
+#
+# To remove the generated splash screens (e.g. before regenerating from scratch), run:
+#   dart run flutter_native_splash:remove
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: "assets/icon/icon.png"
+
+  color_dark: "#121212"
+  image_dark: "assets/icon/icon.png"
+
+  android_12:
+    color: "#FFFFFF"
+    image: "assets/icon/icon.png"
+    color_dark: "#121212"
+    image_dark: "assets/icon/icon.png"
+
+  web: false

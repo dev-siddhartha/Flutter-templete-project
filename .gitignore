@@ -33,6 +33,9 @@ migrate_working_dir/
 .pub/
 /build/
 
+# Test coverage output (flutter test --coverage)
+/coverage/
+
 # Symbolication related
 app.*.symbols
 
@@ -47,4 +50,15 @@ app.*.map.json
 
 #! Uncomment this line while developing project
 # *.vscode/
-# *.env.*
+
+# Environment files - copy .env.example to .env.dev / .env.prod and fill in real values.
+.env.dev
+.env.prod
+
+# Firebase config - copy the matching *.example file and fill in real values
+# (see: https://firebase.google.com/docs/flutter/setup#configure-firebase).
+android/app/src/*/google-services.json
+ios/config/*/GoogleService-Info.plist
+
+# Android release signing - copy key.properties.example and fill in real values.
+android/key.properties

@@ -120,37 +120,41 @@ class _InputButtonState extends State<InputButton>
           borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.r),
           onTap: widget.onPressed != null ? onTap : null,
           child: AnimatedContainer(
-              duration: const Duration(seconds: 3),
-              width: widget.width,
-              height: widget.height ?? height(),
-              child: _buildButton(isEnabled)),
+            duration: const Duration(seconds: 3),
+            width: widget.width,
+            height: widget.height ?? height(),
+            child: _buildButton(isEnabled),
+          ),
         );
       },
     );
   }
 
   Widget _buildButton(bool enabled) {
-    Color fontColor = widget.fontColor ??
+    Color fontColor =
+        widget.fontColor ??
         (enabled
             ? widget.isOutlined
-                ? Theme.of(context).primaryColor
-                : AppColors.whiteColor
+                  ? Theme.of(context).primaryColor
+                  : AppColors.whiteColor
             : AppColors.grey[600]);
     return Container(
       margin: EdgeInsets.zero,
-      padding: widget.padding ??
+      padding:
+          widget.padding ??
           EdgeInsets.symmetric(vertical: 5.h, horizontal: 10.w),
       decoration: BoxDecoration(
         color: enabled
             ? widget.isOutlined
-                ? Colors.transparent
-                : (widget.color ?? Theme.of(context).primaryColor)
+                  ? Colors.transparent
+                  : (widget.color ?? Theme.of(context).primaryColor)
             : widget.disableColor ??
-                (AppColors.grey[300].withValues(alpha: .3)),
+                  (AppColors.grey[300].withValues(alpha: .3)),
         border: Border.all(
-            color: enabled
-                ? (widget.borderColor ?? Theme.of(context).primaryColor)
-                : widget.disableBorderColor ?? (AppColors.secondary)),
+          color: enabled
+              ? (widget.borderColor ?? Theme.of(context).primaryColor)
+              : widget.disableBorderColor ?? (AppColors.secondary),
+        ),
         borderRadius: BorderRadius.circular(widget.borderRadius ?? 8.r),
       ),
       child: Row(
@@ -171,33 +175,30 @@ class _InputButtonState extends State<InputButton>
                           strokeWidth: 2.0,
                         ),
                       ),
-                    )
+                    ),
                   ] else ...[
                     if (widget.prefixIcon != null) ...[
                       widget.prefixIcon!,
                       SizedBox(width: widget.iconAndTextGap?.w ?? 5.w),
                     ],
-                    TextWidget(
+                    SldsText(
                       widget.buttonText,
                       color: fontColor,
-                      textType: TextType.custom,
-                      textOptions: TextOptions(
-                        //! maintain with button size by default
-                        fontSize: widget.fontSize ??
-                            (widget.buttonSize == ButtonSize.small
-                                ? 14.sp
-                                : widget.buttonSize == ButtonSize.large
-                                    ? 18.sp
-                                    : 16.sp),
-                        fontWeight: widget.fontWeight ?? FontWeight.w500,
-                        letterSpacing: 0.5,
-                      ),
+                      fontSize:
+                          widget.fontSize ??
+                          (widget.buttonSize == ButtonSize.small
+                              ? 14.sp
+                              : widget.buttonSize == ButtonSize.large
+                              ? 18.sp
+                              : 16.sp),
+                      fontWeight: widget.fontWeight ?? FontWeight.w500,
+                      letterSpacing: 0.5,
                     ),
                     if (widget.suffixIcon != null) ...[
                       SizedBox(width: widget.iconAndTextGap?.w ?? 5.w),
                       widget.suffixIcon!,
                     ],
-                  ]
+                  ],
                 ],
               ),
             ),

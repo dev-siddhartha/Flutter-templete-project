@@ -44,13 +44,10 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
         automaticallyImplyLeading: false,
         title: customTitle ??
             (title != null
-                ? TextWidget(
+                ? SldsText(
                     title!,
-                    textType: TextType.custom,
-                    textOptions: TextOptions(
-                      fontSize: 18.sp,
-                      fontWeight: FontWeight.w500,
-                    ),
+                    fontSize: 18.sp,
+                    fontWeight: FontWeight.w500,
                   )
                 : null),
         actions: [...?actions, 10.horizontalSpace],
